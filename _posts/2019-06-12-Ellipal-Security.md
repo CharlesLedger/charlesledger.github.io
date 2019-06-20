@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Extracting seed from Ellipal wallet
-summary: We found several vulnerabilities in the device. Some of them allow an attacker to re-activate the communication interfaces and to backdoor a device enabling supply chain or evil maid attacks.
-One of the vulnerabilities was especially critical since it allows an attacker with physical access to extract the seed from the device.
+summary: We found several vulnerabilities in the device. Some of them allow an attacker to re-activate the communication interfaces and to backdoor a device enabling supply chain or evil maid attacks. One of the vulnerabilities was especially critical since it allows an attacker with physical access to extract the seed from the device.
 featured-img: ellipal-wifi
 
 ---

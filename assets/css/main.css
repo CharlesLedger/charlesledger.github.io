@@ -430,13 +430,13 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
-  color: #343851;
+  color: #514134;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; }
 
 ::selection {
   color: #fff;
-  background-color: #3c3d41; }
+  background-color: #413e3c; }
 
 p {
   margin-top: 0;
@@ -448,7 +448,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #313237;
+  color: #373431;
   margin-top: 0;
   margin-bottom: .5rem; }
 
@@ -460,8 +460,8 @@ a {
   a:active, a:focus {
     outline: 0; }
   a:hover, a:focus {
-    color: #68a4f1;
-    border-bottom: 1px solid #68a4f1; }
+    color: #f1a668;
+    border-bottom: 1px solid #f1a668; }
 
 hr {
   height: 1px;
@@ -476,14 +476,14 @@ abbr[title] {
 
 mark {
   background: #ff0;
-  color: #313237; }
+  color: #373431; }
 
 code {
   padding: 0.2em 0.4em;
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 0.9rem;
-  color: #25292e;
-  background-color: #f6f8fa;
+  color: #2e2925;
+  background-color: #faf8f6;
   border-radius: 3px; }
 
 pre {
@@ -492,16 +492,16 @@ pre {
   margin-bottom: 1rem;
   overflow-x: auto;
   font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  color: #25292e;
+  color: #2e2925;
   word-wrap: normal;
-  background-color: #f6f8fa;
-  border: solid 1px #dce6f0;
+  background-color: #faf8f6;
+  border: solid 1px #fee5dc;
   border-radius: 0.3rem; }
   pre > code {
     padding: 0;
     margin: 0;
     font-size: 0.9rem;
-    color: #25292e;
+    color: #2e2925;
     word-break: normal;
     white-space: pre;
     background: transparent;
@@ -518,7 +518,7 @@ pre {
     filter: blur(0); }
 
 .dark-bg {
-  background-color: #313237; }
+  background-color: #373431; }
 
 .hidden {
   display: none;
@@ -547,7 +547,7 @@ pre {
 
 .header {
   background-color: #fff;
-  color: #343851;
+  color: #514134;
   position: absolute;
   z-index: 4;
   width: 100%;
@@ -577,9 +577,9 @@ pre {
   margin-right: 1.25rem;
   outline: 0;
   border-bottom: 0;
-  color: #313237; }
+  color: #373431; }
   .header__logo:hover {
-    color: #313237;
+    color: #373431;
     border-bottom: 0; }
   .header__logo .header__logo--container {
     width: 58px; }
@@ -603,7 +603,7 @@ pre {
   background: #fff; }
 
 .header__link {
-  color: #343851;
+  color: #514134;
   padding: .938rem 0;
   border-top: 1px solid #ededed; }
 
@@ -620,7 +620,7 @@ pre {
     display: block;
     position: relative;
     margin-top: 4px;
-    background-color: #343851;
+    background-color: #514134;
     width: 100%;
     height: 2px;
     border-radius: 1px;
@@ -736,7 +736,7 @@ input[type="button"] {
   white-space: nowrap;
   cursor: pointer;
   color: #fff;
-  background-color: #222325;
+  background-color: #252322;
   text-align: center;
   border: 0;
   border-radius: 0;
@@ -760,7 +760,7 @@ input[type="button"] {
   input[type="button"] :focus,
   input[type="button"] :active {
     color: #fff;
-    background-color: #44464a;
+    background-color: #4a4644;
     outline: 0; }
 
 .btn + .btn {
@@ -776,7 +776,7 @@ button:disabled {
   transition: background-color .2s ease; }
   button:disabled:hover,
   button:disabled :focus {
-    background-color: #222325; }
+    background-color: #252322; }
 
 .post-card {
   display: block;
@@ -817,10 +817,10 @@ button:disabled {
     position: relative;
     padding: 1.875rem 1.25rem 0.625rem;
     width: 100%;
-    color: #838c8d;
+    color: #8d8883;
     border-bottom: 0; }
     .post-card__inner:focus, .post-card__inner:hover {
-      color: #838c8d;
+      color: #8d8883;
       border-bottom: 0; }
   .post-card__header {
     margin-bottom: 0.75rem; }
@@ -980,7 +980,7 @@ textarea {
   background-color: transparent;
   border: 0;
   outline: 0;
-  color: #313237;
+  color: #373431;
   cursor: pointer; }
   .modal__close-button:hover {
     background-color: transparent; }
@@ -1260,7 +1260,7 @@ table {
   min-height: 8.75rem;
   width: 100%;
   position: relative;
-  background-color: #313237; }
+  background-color: #373431; }
   @media only screen and (min-width: 62em) {
     .hero--small {
       height: 12.5em; } }
@@ -1348,9 +1348,9 @@ table {
   align-items: flex-start; }
   .controls__item span {
     font-size: 0.875rem;
-    color: #838c8d; }
+    color: #8d8883; }
   .controls__item a {
-    color: #313237;
+    color: #373431;
     font-weight: bold;
     border-bottom: 0; }
     .controls__item a svg {

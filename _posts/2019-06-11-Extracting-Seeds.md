@@ -1,6 +1,9 @@
 ---
 layout: post
-author: Charles Guillemet (CSO at Ledger)
+title: Extracting seeds from Wallets
+summary: An executive summary of the Donjon findings during the research.
+featured-img: seed-extract
+
 ---
 
 # Extracting seeds from (Hardware) wallets

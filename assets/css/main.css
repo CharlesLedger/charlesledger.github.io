@@ -1,3 +1,6 @@
+@font-face {
+  font-family: "MuseoSans_300";
+  src: url("/assets/fonts/MuseoSans_300.otf"); }
 /*
  * Recommended to use import if you're building the site through gulp.
  * @import "node_modules/normalize.css/normalize";
@@ -427,7 +430,7 @@ figure {
 
 body {
   background-color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  font-family: "MuseoSans_300", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   color: #514134;
@@ -876,7 +879,7 @@ textarea {
   border: 0;
   border-bottom: 2px solid #ededed;
   outline: none;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  font-family: "MuseoSans_300", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   background: transparent; }
   input:focus,
   textarea:focus {
@@ -1255,8 +1258,14 @@ table {
     height: 100%;
     background: rgba(51, 41, 34, 0.8); }
 
+/* Added by us */
 .hero.nooverlay::before {
   background: none; }
+
+/* Added by us.
+ * Fix image top-cropping when screen is wide. */
+.hero.nooverlay {
+  margin-top: 60px; }
 
 .hero--small {
   margin: 3.75rem auto 0;
@@ -1299,6 +1308,19 @@ table {
         padding: 1rem 0;
         font-size: 2.625em;
         line-height: 3.125rem; } }
+
+/* Added by us */
+.hero.titleleft .hero__wrap {
+  transform: translate(0%, -50%);
+  left: 13%; }
+.hero.titleleft .hero__title {
+  color: black;
+  text-align: left; }
+.hero.titleleft p.hero__meta {
+  color: black;
+  text-align: left;
+  max-width: 50%;
+  font-size: 16pt; }
 
 .page-content {
   max-width: 52.5rem;

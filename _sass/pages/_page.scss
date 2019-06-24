@@ -113,6 +113,8 @@
     @include breakpoint($xl) {
       @include container(1170px);
     }
+
+    padding-left: 20px;
   }
   .hero__title {
     color: black;

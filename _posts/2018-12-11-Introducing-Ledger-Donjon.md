@@ -22,7 +22,9 @@ Software attacks are any attempt to expose, alter, disable, destroy, steal, gain
 
 Probably the most striking example of a software vulnerability is a Heartbleed, a bug in a cryptography library that allows attackers to intercept secure communications and steal sensitive information.
 
-![heartbleed](/assets/introducing-donjon/heartbleed.png)
+<p align="center">
+<img src="/assets/introducing-donjon/heartbleed.png">
+</p>
 <center> <i>Heartbleed - XKCD comics</i> </center><br/>
 
 # Side Channel Attacks

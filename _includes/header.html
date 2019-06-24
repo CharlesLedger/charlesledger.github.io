@@ -3,10 +3,12 @@
     <div class="header__inner">
       <a class="header__logo" href="{{ '/' | relative_url }}">
         <div class="header__logo--container">
-          <img class="site_logo" src="/assets/donjonlogo.png">
+          <img class="site_logo" src="/assets/donjonlogo.png" style="height:40px;">
+        </div>
+        <div> 
+          <p style="margin-bottom:0;font-weight:500;font-size:1.25em;">Ledger <strong>Donjon</strong></p>
         </div>
       </a>
-      <h3 class="donjon_header" style="margin-bottom:0;">Ledger Donjon</h3>
       <nav class="header__links">
         <div class="container header__links-wrapper">
           {% for item in site.navigation %}

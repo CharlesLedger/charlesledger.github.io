@@ -5,7 +5,6 @@ summary: A very high level description of Ledger Donjon - the security research 
 featured-img: intro-donjon
 ---
 
-
 At Ledger, we believe in true security. Security is not a term that we take lightly. To build secure systems, it is necessary to use secure hardware bricks and implement a secure Operating System (OS) on top of these. Even with the best security coding practices and secure hardware, nothing beats an attack-oriented mindset when it comes to assessing security.
 
 That is why we created an internal security evaluation lab in Ledger’s Donjon.
@@ -32,7 +31,7 @@ Side channel attacks are a wide range of attacks that consist of exploiting phys
 
 For instance, an attacker with physical access to a security device could measure the power consumption or electromagnetic emanations of the circuit to extract information that could lead to the secret manipulated by the device. To perform these attacks, a wide variety of skills are required, including cryptography, electronics, embedded software implementation and data science.
 
-![sidechannel](assets/introducing-donjon/sca.jpg)
+![side_channel](assets/introducing-donjon/sca.png)
 <center> *Our test Side Channel test bench - Side Channel Results - Electromagnetic probes* </center><br/>
 
 

@@ -23,7 +23,7 @@ Software attacks are any attempt to expose, alter, disable, destroy, steal, gain
 Probably the most striking example of a software vulnerability is a Heartbleed, a bug in a cryptography library that allows attackers to intercept secure communications and steal sensitive information.
 
 ![heartbleed](/assets/introducing-donjon/heartbleed.png)
-<center> *Heartbleed - XKCD comics* </center><br/>
+<center> <i>Heartbleed - XKCD comics</i> </center><br/>
 
 # Side Channel Attacks
 
@@ -32,7 +32,7 @@ Side channel attacks are a wide range of attacks that consist of exploiting phys
 For instance, an attacker with physical access to a security device could measure the power consumption or electromagnetic emanations of the circuit to extract information that could lead to the secret manipulated by the device. To perform these attacks, a wide variety of skills are required, including cryptography, electronics, embedded software implementation and data science.
 
 ![side_channel](/assets/introducing-donjon/sca.png)
-<center> *Our test Side Channel test bench - Side Channel Results - Electromagnetic probes* </center><br/>
+<center>  <i> Our test Side Channel test bench - Side Channel Results - Electromagnetic probes </i> </center><br/>
 
 
 # Fault Attacks
@@ -47,7 +47,7 @@ Fault attacks consist of perturbing a circuit during its execution of functional
 For even more security, the Donjon helps hardening Ledger’s servers by designing custom anti-tampering security solutions, preventing any attacker from stealing stored secrets.
 
 ![sensor](/assets/introducing-donjon/hardening.jpeg)
-<center> *Motion sensor* </center><br/>
+<center>  <i>Motion sensor </i> </center><br/>
 
 
 # Certification
@@ -62,7 +62,7 @@ The certification program initiated at Ledger targets several objectives:
 As Blockchain technology is still relatively new, there are no security certification requirements for hardware wallets. Nevertheless, at Ledger we take security very seriously and are the first to undergo an exhaustive certification program for our cryptocurrency solutions — both for the Ledger Nano S and the Ledger Vault.
 
 ![sensor](/assets/introducing-donjon/ANSSI.jpeg)
-<center> *ANSSI - 3rd party security certification body* </center><br/>
+<center> <i>ANSSI - 3rd party security certification body </i></center><br/>
 
 # Open Security
 

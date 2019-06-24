@@ -1301,12 +1301,14 @@ table {
         line-height: 3.125rem; } }
 
 .hero.titleleft .hero__wrap {
-  transform: translate(0%, -50%); }
+  transform: translate(0%, -50%);
+  left: 15%; }
 .hero.titleleft .hero__title {
   color: black;
   text-align: left; }
 .hero.titleleft p.hero__meta {
-  color: black; }
+  color: black;
+  text-align: left; }
 
 .page-content {
   max-width: 52.5rem;

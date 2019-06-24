@@ -91,6 +91,7 @@
 .hero.titleleft {
   .hero__wrap {
     transform: translate(0%, -50%);
+    left: 15%;
   }
   .hero__title {
     color: black;
@@ -98,6 +99,7 @@
   }
   p.hero__meta {
     color: black;
+    text-align: left;
   }
 }
 

@@ -97,8 +97,22 @@
 /* Added by us */
 .hero.titleleft {
   .hero__wrap {
-    transform: translate(0%, -50%);
-    left: 13%;
+    //transform: translate(0%, -50%);
+    @include breakpoint($sm) {
+      @include container(540px);
+    }
+  
+    @include breakpoint($md) {
+      @include container(720px);
+    }
+  
+    @include breakpoint($lg) {
+      @include container(960px);
+    }
+  
+    @include breakpoint($xl) {
+      @include container(1170px);
+    }
   }
   .hero__title {
     color: black;
@@ -111,7 +125,6 @@
     font-size: 16pt;
   }
 }
-
 
 .page-content {
   max-width: 52.5rem;

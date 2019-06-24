@@ -4,10 +4,18 @@ title: About
 permalink: /about/
 ---
 
-Sleek is a modern Jekyll theme focused on speed performance & SEO best practices. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/) or simply read the guide on how to [get started](/getting-started)
+Ledger Donjon is the security research team at Ledger.
+Its main mission is to enhance the security of Ledger's products.
 
-You can find the source code for the Jekyll new theme at:
-[sleek](https://github.com/janczizikow/sleek)
+From time to time, the team also works on improving the security of the ecosystem.
 
-You can find the source code for Jekyll at
-[jekyll](https://github.com/jekyll/jekyll)
+Punctually, the Donjon runs external security audit/consultancy.
+
+The Donjon fields of expertise are quite wide:
+- Software security
+- Hardware security
+- Cryptography
+
+The Donjon also believes in open-source when possible. 
+[Github Donjon](https://github.com/ledger-donjon)
+

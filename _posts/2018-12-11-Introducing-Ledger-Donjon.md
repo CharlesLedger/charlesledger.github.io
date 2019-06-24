@@ -5,8 +5,6 @@ summary: A very high level description of Ledger Donjon - the security research 
 featured-img: intro-donjon
 ---
 
-ANSSI.jpeg  fault.jpg  hardening.jpeg  heartbleed.png  sca.jpg  sca-testbench.jpeg  soft.jpg
-
 
 At Ledger, we believe in true security. Security is not a term that we take lightly. To build secure systems, it is necessary to use secure hardware bricks and implement a secure Operating System (OS) on top of these. Even with the best security coding practices and secure hardware, nothing beats an attack-oriented mindset when it comes to assessing security.
 
@@ -25,7 +23,7 @@ Software attacks are any attempt to expose, alter, disable, destroy, steal, gain
 
 Probably the most striking example of a software vulnerability is a Heartbleed, a bug in a cryptography library that allows attackers to intercept secure communications and steal sensitive information.
 
-![heartbleed](/assets/introducing-donjon/heartbleed.jpg)
+![heartbleed](/assets/introducing-donjon/heartbleed.png)
 <center> *Heartbleed - XKCD comics* </center><br/>
 
 # Side Channel Attacks
@@ -64,7 +62,7 @@ The certification program initiated at Ledger targets several objectives:
 
 As Blockchain technology is still relatively new, there are no security certification requirements for hardware wallets. Nevertheless, at Ledger we take security very seriously and are the first to undergo an exhaustive certification program for our cryptocurrency solutions — both for the Ledger Nano S and the Ledger Vault.
 
-![sensor](assets/introducing-donjon/ANSSI.jpg)
+![sensor](assets/introducing-donjon/ANSSI.jpeg)
 <center> *ANSSI - 3rd party security certification body* </center><br/>
 
 # Open Security

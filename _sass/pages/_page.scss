@@ -81,7 +81,16 @@
       line-height: 3.125rem;
     }
   }
+
+  .titleleft {
+    transform: translate(0%, -50%);
+
+    .hero__title {
+      color: black;
+    }
+  }
 }
+
 
 .page-content {
   max-width: 52.5rem;

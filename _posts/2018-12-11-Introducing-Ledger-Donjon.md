@@ -39,7 +39,7 @@ For instance, an attacker with physical access to a security device could measur
 
 Fault attacks consist of perturbing a circuit during its execution of functionalities. Such perturbations can be performed through different means including over-heating, voltage glitching, overclocking, creating strong electric or magnetic fields or more efficiently by using lasers. The hardware device may begin to show faulty behavior, such as bypassing security test or outputting incorrect results which allows an attacker to perform a Differential Fault Analysis. For instance, it allows an attacker to bypass a PIN check, or get faulty signatures leading to secret key retrieval.
 
-![fault](/assets/introducing-donjon/fault.jpg)
+![fault](/assets/introducing-donjon/fault.png)
 <center> *Sample preparation Machine — Deprocessed chip — Fault Attacks Test Bench — Laser microscope objectives — Scaffold Board* </center><br/>
 
 # Security Hardening

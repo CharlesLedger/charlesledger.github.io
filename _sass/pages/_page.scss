@@ -23,6 +23,10 @@
     height: 100%;
     background: rgba(51, 41, 34, .8);
   }
+
+  .titleleft {
+
+  }
 }
 
 .hero.nooverlay {
@@ -81,13 +85,15 @@
       line-height: 3.125rem;
     }
   }
+}
 
-  .titleleft {
+
+.hero.titleleft {
+  .hero__wrap {
     transform: translate(0%, -50%);
-
-    .hero__title {
-      color: black;
-    }
+  }
+  .hero__title {
+    color: black;
   }
 }
 

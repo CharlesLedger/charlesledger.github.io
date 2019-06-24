@@ -31,7 +31,7 @@ Side channel attacks are a wide range of attacks that consist of exploiting phys
 
 For instance, an attacker with physical access to a security device could measure the power consumption or electromagnetic emanations of the circuit to extract information that could lead to the secret manipulated by the device. To perform these attacks, a wide variety of skills are required, including cryptography, electronics, embedded software implementation and data science.
 
-![side_channel](assets/introducing-donjon/sca.png)
+![side_channel](/assets/introducing-donjon/sca.png)
 <center> *Our test Side Channel test bench - Side Channel Results - Electromagnetic probes* </center><br/>
 
 
@@ -39,14 +39,14 @@ For instance, an attacker with physical access to a security device could measur
 
 Fault attacks consist of perturbing a circuit during its execution of functionalities. Such perturbations can be performed through different means including over-heating, voltage glitching, overclocking, creating strong electric or magnetic fields or more efficiently by using lasers. The hardware device may begin to show faulty behavior, such as bypassing security test or outputting incorrect results which allows an attacker to perform a Differential Fault Analysis. For instance, it allows an attacker to bypass a PIN check, or get faulty signatures leading to secret key retrieval.
 
-![fault](assets/introducing-donjon/fault.jpg)
+![fault](/assets/introducing-donjon/fault.jpg)
 <center> *Sample preparation Machine — Deprocessed chip — Fault Attacks Test Bench — Laser microscope objectives — Scaffold Board* </center><br/>
 
 # Security Hardening
 
 For even more security, the Donjon helps hardening Ledger’s servers by designing custom anti-tampering security solutions, preventing any attacker from stealing stored secrets.
 
-![sensor](assets/introducing-donjon/hardening.jpg)
+![sensor](/assets/introducing-donjon/hardening.jpeg)
 <center> *Motion sensor* </center><br/>
 
 
@@ -61,7 +61,7 @@ The certification program initiated at Ledger targets several objectives:
 
 As Blockchain technology is still relatively new, there are no security certification requirements for hardware wallets. Nevertheless, at Ledger we take security very seriously and are the first to undergo an exhaustive certification program for our cryptocurrency solutions — both for the Ledger Nano S and the Ledger Vault.
 
-![sensor](assets/introducing-donjon/ANSSI.jpeg)
+![sensor](/assets/introducing-donjon/ANSSI.jpeg)
 <center> *ANSSI - 3rd party security certification body* </center><br/>
 
 # Open Security

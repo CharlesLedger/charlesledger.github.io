@@ -60,9 +60,9 @@ The certification program initiated at Ledger targets several objectives:
 - to be challenged by a third party with highly advanced equipment in a security laboratory
 
 As Blockchain technology is still relatively new, there are no security certification requirements for hardware wallets. Nevertheless, at Ledger we take security very seriously and are the first to undergo an exhaustive certification program for our cryptocurrency solutions — both for the Ledger Nano S and the Ledger Vault.
-
+<center>
 ![sensor](/assets/introducing-donjon/ANSSI.jpeg)
-<center> <i>ANSSI - 3rd party security certification body </i></center><br/>
+<i>ANSSI - 3rd party security certification body </i></center><br/>
 
 # Open Security
 

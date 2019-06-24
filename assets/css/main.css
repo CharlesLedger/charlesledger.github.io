@@ -1,6 +1,6 @@
 @font-face {
   font-family: "MuseoSans_300";
-  src: url("assets/fonts/MuseoSans_300.otf"); }
+  src: url("/assets/fonts/MuseoSans_300.otf"); }
 /*
  * Recommended to use import if you're building the site through gulp.
  * @import "node_modules/normalize.css/normalize";

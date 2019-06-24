@@ -1303,6 +1303,9 @@ table {
 .hero.titleleft .hero__wrap {
   transform: translate(0%, -50%); }
 .hero.titleleft .hero__title {
+  color: black;
+  text-align: left; }
+.hero.titleleft p.hero__meta {
   color: black; }
 
 .page-content {

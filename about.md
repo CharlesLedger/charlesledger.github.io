@@ -4,8 +4,9 @@ title: About
 permalink: /about/
 ---
 
-Ledger Donjon is the security research team at Ledger.
-Its main mission is to enhance the security of Ledger's products.
+Ledger Donjon is the security research at Ledger.
+
+Its main mission is to improve the security of Ledger's products.
 
 From time to time, the team also works on improving the security of the ecosystem.
 
@@ -16,6 +17,6 @@ The Donjon fields of expertise are quite wide:
 - Hardware security
 - Cryptography
 
-The Donjon also believes in open-source when possible. 
+The Donjon also believes in open-source when possible. Pull requests are welcome.
 [Github Donjon](https://github.com/ledger-donjon)
 

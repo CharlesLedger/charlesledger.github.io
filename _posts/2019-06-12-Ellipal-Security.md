@@ -20,7 +20,10 @@ This work has been responsibly disclosed to the vendor allowing it to emit an up
 Ellipal security model
 As stated in Ellipal’s documentation, the device is “air-gapped”, meaning there are no communication interfaces: no USB, no WiFi, no GPRS… The only way for this device to communicate is by using QR codes. It has a touchscreen to display QR codes and a camera to scan them from the user’s phone.
 
-![ellinterfaces](/assets/ellipal/ellipal-interfaces.jpg)
+<p align="center">
+<img src="/assets/ellipal/ellipal-interfaces.jpg">
+</p>
+<center> <i>Ellipal - An physically airgaped wallet</i> </center><br/>
 
 
 There is also an upgrade mechanism using an SD card interface. The user has to download the upgrade file and put it on an SD card. The upgrades are encrypted and signed.
@@ -42,17 +45,26 @@ https://order.ellipal.com/lib/v2.0.zip
 ```
 The files were decompressed and the .bin files were quickly analysed. First of all, using binwalk, we had a look at the entropy of the file.
 
-![ellentropy](/assets/ellipal/ellipal-entropy.png)
+<p align="center">
+<img src="/assets/ellipal/ellipal-entropy.png">
+</p>
+<center> <i>Entropy of a Firmware upgrades</i> </center><br/>
 
 This entropy trace looks a bit fishy. Indeed, a well encrypted file should have a constant entropy close to one all along the file.
 
 Computing some statistics, we noticed that some patterns are more frequent in the file than others.
 
-![ellstats](/assets/ellipal/ellipal-frequencies.png)
+<p align="center">
+<img src="/assets/ellipal/ellipal-frequencies.png">
+</p>
+<center> <i>Word Frequencies - several word sizes</i> </center><br/>
 
 This clearly indicates that the file is encrypted in ECB mode which is definitely not a good practice.
 
-![ellecb](/assets/ellipal/ellipal-ecb.png)
+<p align="center">
+<img src="/assets/ellipal/ellipal-ecb.png">
+</p>
+<center> <i>Chaining mode - Effect on Image encryption</i> </center><br/>
 
 [Wikipedia-chaining-mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation)
 
@@ -66,11 +78,19 @@ Meanwhile, we received our Ellipal wallet. We quickly played with the software i
 Hardware Study
 The Ellipal device is quite similar to a low-end mobile phone. Once the plastic enclosure is opened and the battery has been removed, we can disconnect the buttons and screen and extract the motherboard of the device. The motherboard is a small multilayer PCB on which we can notice two metal passive shields, whose purpose is probably to enhance CEM properties of the electronics. We managed to remove the metal shiels using hot-air soldering station and a scalpel, without damaging the board to keep it functional.
 
-![ellstats](/assets/ellipal/ellipal-open.png)
+<p align="center">
+<img src="/assets/ellipal/ellipal-open.png">
+</p>
+<center> <i>Ellipal Device - opened </i> </center><br/>
+
 
 The design is constructed around a MediaTek SoC MT6580. This is the same SoC as the Bitfi wallet ! This SoC was designed for low-cost smartphones.
 
-![ellstats](/assets/ellipal/ellipal-zoom.png)
+<p align="center">
+<img src="/assets/ellipal/ellipal-zoom.png">
+</p>
+<center> <i>Ellipal Device - zoom on PCB </i> </center><br/>
+
 
 The design also embeds a touchscreen
 
@@ -84,7 +104,11 @@ Unfortunately, the LCD screen has been a little bit damaged when opening the dev
 Finding #1: UART interface
 In the industry, it is common and convenient to have debug UART interface on linux- based boards. We were quite confident that such an interface would be available on the board, and we found two test-points on the bottom layer of the PCB, right under the Mediatek SoC. 
 
-![elluart](/assets/ellipal/ellipal-uart.png)
+<p align="center">
+<img src="/assets/ellipal/ellipal-uart.png">
+</p>
+<center> <i>UART interface is active </i> </center><br/>
+
 
 When booting the device,  using an oscilloscope we quickly found activity on one of those test points using an oscilloscope, which is the UART TX pin of the SoC. The baud rate can be measured and the data can be read using a simple USB-to-serial chip such as the FT232. Also, we had to slightly modify slightly the USB-to-serial converter to make it work with 1.8V logic, which is the voltage level of the I/Os of the SoC.
 
@@ -145,7 +169,11 @@ The TX interface provides interesting logs. In particular, the partition table o
 [PART] [0x00000001CBF80000-0x00000001CCF7FFFF] "flashinfo" (32768 blocks)
 ```
 
-![ellfast](/assets/ellipal/ellipal-fastboot.jpg)
+<p align="center">
+<img src="/assets/ellipal/ellipal-fastboot.jpg">
+</p>
+<center> <i>Activating Fastboot with UART</i> </center><br/>
+
 
 We also “played” with the RX interface. There is a time-window where a keyword can be sent to the SoC to change booting mode. Sending a “FASTBOOT” token enables fastboot mode which provides commands to read or write to the filesystem with the knowledge of a manufacturer secret-key, which we don’t have so far.
 
@@ -153,7 +181,10 @@ We were also able to boot on factory testing mode by sending “FACTFACT”. The
 
 We were surprised that the device could connect to an access point, since it is supposed to be air-gapped. We concluded that WiFi was only disabled by software, though we did not check if Android kernel was compiled with WiFi support.
 
-![ellwifi](/assets/ellipal/ellipal-wifi.jpg)
+<p align="center">
+<img src="/assets/ellipal/ellipal-wifi.jpg">
+</p>
+<center> <i>A Wifi chipset is present and active</i> </center><br/>
 
 _Fun fact: with our new volume buttons soldered, we are able to change the volume level in Android. Even though Ellipal has no speaker, the volume UI from stock Android is still present and active!_
 
@@ -192,12 +223,37 @@ The update mechanism uses an encrypted and signed apk. The apk is encrypted with
 The private key inputs in the app are not checked. Feeding it with a very long word list makes it crash (probably Out of Memory). Nevertheless, It’s probably not possible to exploit this vector.
 
 
-![ellfast](/assets/ellipal/ellipal-donjon.gif)
+<p align="center">
+<img src="/assets/ellipal/ellipal-donjon.gif">
+</p>
+<center> <i>Donjon is root on Ellipal :) </i> </center><br/>
 
 Our first trial of filesystem modification. Worked like a charm.
+
+# Conclusion
 
 ## Responsible disclosure
 
 We disclosed these vulnerabilities to Ellipal who took them very seriously. We had fruitful exchanges with them. This report triggered the creation of their bounty program. They emitted an upgrade (we didn’t check the upgrade) and credited us for helping them to improve the security of their device.
 
 They finally gave us a bounty reward. We were happy to help improving the security in the ecosystem.
+
+<p align="center">
+<img src="/assets/ellipal/ellipal-misleading.png">
+</p>
+<center> <i>Misleading security properties</i> </center><br/>
+
+
+## Summary
+
+We conducted a quick security evaluation of Ellipal Wallet. The security model sounds quite interesting to us. The interfaces seemed very limited.
+The analysis revealed this Hardware Wallet is in fact an Android phone. The interfaces are only locked by the Android software stack.
+Several flaws have been discovered and repoorted to the manufacturer.
+On this kind of device, the security can be guaranteed only if:
+- The software running is **genuine**: very difficult to guarantee this on a Android phone)
+- The software is well written and flawless: We hope, we could help for this
+- The attacker has no physical access to the device - or a **very strong** password
+
+The security model is thus very similar to [Bitfi wallet](https://cybergibbons.com/category/security-2/bitfi/)
+
+

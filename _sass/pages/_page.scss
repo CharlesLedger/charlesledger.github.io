@@ -36,6 +36,12 @@
   }
 }
 
+/* Added by us.
+ * Fix image top-cropping when screen is wide. */
+.hero.nooverlay {
+  margin-top: 60px;
+}
+
 .hero--small {
   margin: 3.75rem auto 0;
   min-height: 8.75rem;

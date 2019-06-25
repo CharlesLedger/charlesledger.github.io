@@ -254,6 +254,6 @@ On this kind of device, the security can be guaranteed only if:
 - The software is well written and flawless: We hope, we could help for this
 - The attacker has no physical access to the device - or a **very strong** password
 
-The security model is thus very similar to [Bitfi wallet](https://cybergibbons.com/category/security-2/bitfi/)
+Consequently, the security model is very similar to [Bitfi wallet](https://cybergibbons.com/category/security-2/bitfi/)
 
 

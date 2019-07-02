@@ -98,7 +98,7 @@ The only mitigation is to use a **strong** passphrase: we recommend 37 random ch
 ## Related work
 To our knowledge, there are 4 physical seed extraction techniques on Trezor or clones:
 - <a  href="https://colinoflynn.com/2019/03/glitching-trezor-using-emfi-through-the-enclosure/">Colin O'Flynn: EMFI through the enclosure </a>
-- Wallet.fail: They demonstrated a glitch attack allowing to dump SRAM during the firmware upgrade process
+- Wallet.fail: They demonstrated a glitch attack allowing to dump SRAM during the firmware upgrade process (No report about this attack)
 - <a href="https://saleemrashid.com/2017/08/17/extracting-trezor-secrets-sram/">Anonymous researcher: warm reset to extract seed from SRAM </a>
 - <a href= "https://www.offensivecon.org/speakers/2019/sergei-volokitin.html">Sergei Volokitin: EMFI attack on keepkey </a>
 

@@ -31,7 +31,7 @@ Evil maid attacks
 Ledger-Donjon recently found a physical attack on the Trezor One hardware wallet, which has been responsibly disclosed to Trezor. The identified vulnerability allows an attacker with physical access to get the master seed protected by the wallet if no strong passphrase is set. After a deep evaluation of this vulnerability, it appears very clearly that this vulnerability cannot be patched without making a complete hardware redesign of the hardware wallet. When we first talked about this attack, it has been said that the attack was too specialized, not realistic and hard to reproduce. At first, it required heavy and expensive equipment (worth more than $100.000) with a complete day of work for a hardware security expert. Note: this is the typical setup we use for challenging the security of our own hardware wallets.
 
 <p align="center">
-<img src="/assets/trezor-extract/sadtrezor.jpg">
+<img src="/assets/trezor-extract/sadtrezor.jpg" width="400">
 </p>
 <center> <i>Trezor One device</i> </center><br/>
 

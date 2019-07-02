@@ -2,7 +2,7 @@
 layout: post
 title: Unfixable Seed Extraction on Trezor: A practical and reliable attack 
 summary: An executive summary of the Donjon findings during the research.
-featured-img: seed-extract-trezor
+featured-img: sad-trezor
 ---
 
 _TL;DR_:
@@ -30,9 +30,12 @@ Supply chain attacks
 Evil maid attacks
 Ledger-Donjon recently found a physical attack on the Trezor One hardware wallet, which has been responsibly disclosed to Trezor. The identified vulnerability allows an attacker with physical access to get the master seed protected by the wallet if no strong passphrase is set. After a deep evaluation of this vulnerability, it appears very clearly that this vulnerability cannot be patched without making a complete hardware redesign of the hardware wallet. When we first talked about this attack, it has been said that the attack was too specialized, not realistic and hard to reproduce. At first, it required heavy and expensive equipment (worth more than $100.000) with a complete day of work for a hardware security expert. Note: this is the typical setup we use for challenging the security of our own hardware wallets.
 
-/!\ Add Picture here
-Trezor One 
- 
+<p align="center">
+<img src="/assets/trezor-extract/sadtrezor.jpg">
+</p>
+<center> <i>Trezor One device</i> </center><br/>
+
+
  
 Recently, we decided to evaluate the feasibility of this attack using a compact and low-cost setup. Therefore, the attack was redesigned with cheap tools that can be bought from any electronics store, with basic electronics techniques.
 A very compact electronic board was designed in order to extract the seed from the device within only 5 minutes. **The board costs around 100$** and it can be connected to any computer via USB. The cost of such an electronic board could probably be optimized even further. However, 100$ may already be considered to be very cheap compared to the potential value of the seed, knowing that it has to be worth the investment of the hardware wallet.

@@ -5,7 +5,7 @@ summary: An executive summary of the Donjon findings during the research.
 featured-img: seed-extract-trezor
 ---
 
-_TL;DR_
+_TL;DR_:
 An attacker with a stolen device can extract the seed from the device. It takes less than 5 minutes and the necessary materials cost around 100$.
 This vulnerability affects Trezor One, Trezor T, Keepkey and all other Trezor clones.
 Unfortunately, this vulnerability cannot be patched and, for this reason, we decided not to give technical details about the attack to mitigate a possible exploitation in the field. However SatoshiLabs suggested users to either exclude physical attacks from their threat model, or to use a passphrase.
@@ -28,7 +28,7 @@ In most security models of hardware wallets, physical attacks are often consider
 Theft of the hardware wallet
 Supply chain attacks
 Evil maid attacks
-Ledger-Donjon recently found a physical attack on the Trezor One hardware wallet, which has been responsibly disclosed to Trezor. The identified vulnerability allows an attacker with physical access to get the master seed protected by the wallet if no strong passphrase is set. After a deep evaluation of this vulnerability, it appears very clearly that this vulnerability cannot be patched without making a complete hardware redesign of the hardware wallet. When we first talked about this attack, it has been said that the attack was too specialized, not realistic and hard to reproduce. At first, it required heavy and expensive equipment (worther over $100.000) with a complete day of work for a hardware security expert. Note: this is the typical setup we use for challenging the security of our own hardware wallets.
+Ledger-Donjon recently found a physical attack on the Trezor One hardware wallet, which has been responsibly disclosed to Trezor. The identified vulnerability allows an attacker with physical access to get the master seed protected by the wallet if no strong passphrase is set. After a deep evaluation of this vulnerability, it appears very clearly that this vulnerability cannot be patched without making a complete hardware redesign of the hardware wallet. When we first talked about this attack, it has been said that the attack was too specialized, not realistic and hard to reproduce. At first, it required heavy and expensive equipment (worth more than $100.000) with a complete day of work for a hardware security expert. Note: this is the typical setup we use for challenging the security of our own hardware wallets.
 
 /!\ Add Picture here
 Trezor One 
@@ -51,6 +51,8 @@ However, for the sake of transparency, here is a high-level description of the a
 - Works on all firmware versions - On encrypted firmware (Keepkey & Trezor >= 1.8), the PIN must be bruteforced. It can take a few more minutes (on a fast computer) for a long PIN (9 digits)
 - **Attack is very reliable: 100% success on ~20 devices**
 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/q8jednQQFx4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 Seed extraction
 
 
@@ -73,6 +75,8 @@ For these reasons, a passphrase of about 37 random characters is required to gua
 
 ## Responsible disclosure
 This attack has been disclosed to Trezor in december 2018 and the attack path has been fully explained to the security team. 
+We didn't get any bounty for this responsible disclosure. We obtained 2 other small bounties for the [Side Channel Attack]({% post_url 2019-06-17-Breaking-Trezor-One-with-SCA %}) on the PIN verification and the vulnerability on the password manager.
+It seems Trezor was already aware that Physical seed extraction would be possible. Consequently, we only demonstrated the feasability.
 
 
 ## Takeaway

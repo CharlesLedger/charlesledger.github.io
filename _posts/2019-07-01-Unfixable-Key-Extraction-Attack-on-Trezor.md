@@ -1,23 +1,26 @@
 ---
 layout: post
 title: Unfixable Seed Extraction on Trezor: A practical and reliable attack 
-summary: An executive summary of the Donjon findings during the research.
-featured-img: sad-trezor
+summary: An attacker with a stolen device can extract the seed from the device. It takes less than 5 minutes and the necessary materials cost around 100$.
+featured-img: trezor-cover
+
 ---
 
-_TL;DR_:
+#TL;DR_:
 An attacker with a stolen device can extract the seed from the device. It takes less than 5 minutes and the necessary materials cost around 100$.
 This vulnerability affects Trezor One, Trezor T, Keepkey and all other Trezor clones.
-Unfortunately, this vulnerability cannot be patched and, for this reason, we decided not to give technical details about the attack to mitigate a possible exploitation in the field. However SatoshiLabs suggested users to either exclude physical attacks from their threat model, or to use a passphrase.
+Unfortunately, **this vulnerability cannot be patched** and, for this reason, we decided not to give technical details about the attack to mitigate a possible exploitation in the field. However SatoshiLabs suggested users to either exclude physical attacks from their threat model, or to use a passphrase.
 
 
-# Intro
-The Donjon, Ledger’s security team, recently spent some time and resources to analyse the security of hardware wallets. Our goal is to raise the bar for security in the ecosystem. This blogpost is part of a series - cf TODO INSERT URL HERE
+# Context
+The Donjon, Ledger’s security team, recently spent some time and resources to analyse the security of hardware wallets. Our goal is to raise the bar for security in the ecosystem. This blogpost is part of a series - cf [Extracting seeds]({% post_url 2019-06-11-Extracting-Seeds %})
 
 
-The Trezor-based hardware wallets were part of our evaluation targets. We found these devices to be especially interesting since **the firmware is open source**. The chip itself is **closed source as well as the low-level functions hidden in the flash**. We are experienced in physical attacks and because of the design of these wallets, we thought it was possible to extract the seeds from the devices. We just wanted to find out how difficult it is. In this blogpost, we only focus on the following attack scenario: the attacker steals a hardware wallet, what can he do?
+The Trezor-based hardware wallets were part of our evaluation targets. We found these devices to be especially interesting since **the firmware is open source**. The chip itself is **closed source as well as the low-level functions hidden in the flash**. 
 
-In a previous blogpost, we detailed a vulnerability consisting of retrieving the PIN value from a stolen device, using Side Channel Analysis. This vulnerability has been patched, and SatoshiLabs gave us a bounty for it. A more comprehensive study has been presented at a scientific conference: SSTIC (conference paper here).
+We are experienced in physical attacks and because of the design of these wallets, we thought it was possible to extract the seeds from the devices. We just wanted to find out how difficult it is. In this blogpost, we only focus on the following attack scenario: the attacker steals a hardware wallet, what can he do?
+
+In a [previous blogpost]({% post_url 2019-06-17-Breaking-Trezor-One-with-SCA %}), we detailed a vulnerability consisting of retrieving the PIN value from a stolen device, using Side Channel Analysis. This vulnerability has been patched, and SatoshiLabs gave us a bounty for it. A more comprehensive study has been presented at a scientific conference: SSTIC (conference paper [here]("https://www.sstic.org/media/SSTIC2019/SSTIC-actes/side_channel_assessment_hardware_wallets/SSTIC2019-Article-side_channel_assessment_hardware_wallets-guillemet_san-pedro_servant.pdf")).
 
 In this post, we explain that a physical key extraction attack can be performed quickly with a low-cost setup and **must be considered as a real threat**.
 
@@ -25,10 +28,11 @@ In this post, we explain that a physical key extraction attack can be performed 
 # Extracting Seed
 
 In most security models of hardware wallets, physical attacks are often considered to be impractical and out-of-scope. Most hardware wallets protect the users against remote software attacks, and have no countermeasures against physical attacks, even though these may happen in the following scenarios:
-Theft of the hardware wallet
-Supply chain attacks
-Evil maid attacks
-Ledger-Donjon recently found a physical attack on the Trezor One hardware wallet, which has been responsibly disclosed to Trezor. The identified vulnerability allows an attacker with physical access to get the master seed protected by the wallet if no strong passphrase is set. After a deep evaluation of this vulnerability, it appears very clearly that this vulnerability cannot be patched without making a complete hardware redesign of the hardware wallet. When we first talked about this attack, it has been said that the attack was too specialized, not realistic and hard to reproduce. At first, it required heavy and expensive equipment (worth more than $100.000) with a complete day of work for a hardware security expert. Note: this is the typical setup we use for challenging the security of our own hardware wallets.
+- Theft of the hardware wallet
+- Supply chain attacks
+- Evil maid attacks
+
+The Donjon recently found a physical attack on the Trezor One hardware wallet, which has been responsibly disclosed to Trezor. The identified vulnerability allows an attacker with physical access to get the master seed protected by the wallet if no strong passphrase is set. After a deep evaluation of this vulnerability, it appears very clearly that this vulnerability cannot be patched without making a complete hardware redesign of the hardware wallet. When we first talked about this attack, it has been said that the attack was too specialized, not realistic and hard to reproduce. At first, it required heavy and expensive equipment (worth more than $100.000) with a complete day of work for a hardware security expert. Note: this is the typical setup we use for challenging the security of our own hardware wallets.
 
 <p align="center">
 <img src="/assets/trezor-extract/sadtrezor.jpg" width="400">

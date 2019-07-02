@@ -59,7 +59,7 @@ However, for the sake of transparency, here is a high-level description of the a
 
 <center>
 <iframe width="800" height="450" src="https://www.youtube.com/embed/q8jednQQFx4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-Seed extraction
+<br/> Seed extraction <br/>
 </center>
 
 

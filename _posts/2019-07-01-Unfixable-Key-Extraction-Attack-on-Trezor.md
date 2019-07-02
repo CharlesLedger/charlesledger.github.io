@@ -44,13 +44,12 @@ This attack can never be patched by a firmware update. Fixing it would require a
  
 However, for the sake of transparency, here is a high-level description of the attack:
  
-**Physical access is necessary**
-Equipment required: the Extraktor + laptop
-Setup cost is low: ~100$ + computer
-**Attack is fast:** 3 minutes preparation, 2 minutes seed extraction: **~5 min**
-Works on all firmware versions
-**Attack is very reliable: 100% success on ~20 devices**
-On encrypted firmware (Keepkey & Trezor >= 1.8), the PIN must be bruteforced. It can take a few more minutes (on a fast computer) for a long PIN (9 digits)
+- **Physical access is necessary**
+- Equipment required: the Extraktor + laptop
+- Setup cost is low: ~100$ + computer
+- **Attack is fast:** 3 minutes preparation, 2 minutes seed extraction: **~5 min**
+- Works on all firmware versions - On encrypted firmware (Keepkey & Trezor >= 1.8), the PIN must be bruteforced. It can take a few more minutes (on a fast computer) for a long PIN (9 digits)
+- **Attack is very reliable: 100% success on ~20 devices**
 
 Seed extraction
 
@@ -65,15 +64,16 @@ Security requires awareness: don’t underestimate the feasibility of hardware a
 From our understanding, **there’s no way to patch it**, there is only one mitigation: the use of a long passphrase. In this context, as the seed itself can be considered as public, the passphrase should be long enough to prevent brute-force or dictionary attacks. 
 In this context, the seed can be considered to be public and the whole security relies on the passphrase. The mnemonics + passphrase derivation follows the BIP39 standard. BIP39 uses PBKDF2 function to derive the mnemonics + passphrase into the seed.
 
+- PBKDF2 is a useful function allowing to derive a low-entropy password into a larger cryptographic key. The lack of entropy is balanced by a CPU intensive derivation function preventing brute-force.
+- The main problem in BIP39 is that the number of iterations is set to **only 2048**, which is far lower than the last NIST recommendation (from 2016) **which is 10.000** (https://pages.nist.gov/800-63-3/sp800-63b.html#sec5).
+- When the mnemonics are well-generated and can be kept secret, they represent 256-bits, consequently, the mere 2048 iterations are not a problem.
+- **In this case, where the 24-words can be considered to be public**, the mere 2048 iterations become a problem and brute-force is then possible (such attacks https://eprint.iacr.org/2016/273.pdf are then possible).
 
-PBKDF2 is a useful function allowing to derive a low-entropy password into a larger cryptographic key. The lack of entropy is balanced by a CPU intensive derivation function preventing brute-force.
-The main problem in BIP39 is that the number of iterations is set to **only 2048**, which is far lower than the last NIST recommendation (from 2016) **which is 10.000** (https://pages.nist.gov/800-63-3/sp800-63b.html#sec5).
-When the mnemonics are well-generated and can be kept secret, they represent 256-bits, consequently, the mere 2048 iterations are not a problem.
-**In this case, where the 24-words can be considered to be public**, the mere 2048 iterations become a problem and brute-force is then possible (such attacks https://eprint.iacr.org/2016/273.pdf are then possible).
-In this case, a passphrase of about 37 random characters is required to guarantee the same security level as the 24 words seed.
+For these reasons, a passphrase of about 37 random characters is required to guarantee the same security level as the 24 words seed.
 
 ## Responsible disclosure
-This attack has been disclosed to Trezor in december 2018 and the attack path has been fully explained to them. 
+This attack has been disclosed to Trezor in december 2018 and the attack path has been fully explained to the security team. 
+
 
 ## Takeaway
 A physical access to a Trezor One, Trezor T, Keepkey, or B-wallet allows an attacker to extract the 12/24-words within a few minutes using a low-cost setup (~100$), with a very high reproducibility (we had 100% success). We finally proved it can be fully automated allowing anyone to use it in case someone would sell the Extraktor box (similar to old Playstation hacks). 

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Unfixable Seed Extraction on Trezor - A practical and reliable attack
-summary: A very high level description of Ledger Donjon - the security research at Ledger.
-featured-img: intro-donjon
+title: Unfixable Seed Extraction on Trezor: A practical and reliable attackIntroducing Ledger Donjon
+summary: An attacker with a stolen device can extract the seed from the device. It takes less than 5 minutes and the necessary materials cost around 100$.
+featured-img: trezor-cover
 ---
 
 #TL;DR_:

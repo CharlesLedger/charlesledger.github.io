@@ -22,7 +22,7 @@ In a previous blogpost, we detailed a vulnerability consisting of retrieving the
 In this post, we explain that a physical key extraction attack can be performed quickly with a low-cost setup and **must be considered as a real threat**.
 
 
-# Extracting seed
+# Extracting Seed
 
 In most security models of hardware wallets, physical attacks are often considered to be impractical and out-of-scope. Most hardware wallets protect the users against remote software attacks, and have no countermeasures against physical attacks, even though these may happen in the following scenarios:
 Theft of the hardware wallet
@@ -51,9 +51,10 @@ However, for the sake of transparency, here is a high-level description of the a
 - Works on all firmware versions - On encrypted firmware (Keepkey & Trezor >= 1.8), the PIN must be bruteforced. It can take a few more minutes (on a fast computer) for a long PIN (9 digits)
 - **Attack is very reliable: 100% success on ~20 devices**
 
-
+<center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/q8jednQQFx4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 Seed extraction
+</center>
 
 
 # Conclusion

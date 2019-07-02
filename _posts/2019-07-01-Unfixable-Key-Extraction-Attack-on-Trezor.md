@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Unfixable Seed Extraction on Trezor: A practical and reliable attack
+title: Unfixable Seed Extraction on Trezor - A practical and reliable attack
 summary: A very high level description of Ledger Donjon - the security research at Ledger.
 featured-img: intro-donjon
 ---

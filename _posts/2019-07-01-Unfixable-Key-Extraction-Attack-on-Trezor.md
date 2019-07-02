@@ -5,7 +5,7 @@ summary: An attacker with a stolen device can extract the seed from the device. 
 featured-img: trezor-cover
 ---
 
-#TL;DR_:
+# TL;DR
 An attacker with a stolen device can extract the seed from the device. It takes less than 5 minutes and the necessary materials cost around 100$.
 This vulnerability affects Trezor One, Trezor T, Keepkey and all other Trezor clones.
 Unfortunately, **this vulnerability cannot be patched** and, for this reason, we decided not to give technical details about the attack to mitigate a possible exploitation in the field. However SatoshiLabs suggested users to either exclude physical attacks from their threat model, or to use a passphrase.

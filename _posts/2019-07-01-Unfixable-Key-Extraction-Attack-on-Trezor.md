@@ -3,7 +3,6 @@ layout: post
 title: Unfixable Seed Extraction on Trezor: A practical and reliable attack 
 summary: An attacker with a stolen device can extract the seed from the device. It takes less than 5 minutes and the necessary materials cost around 100$.
 featured-img: trezor-cover
-
 ---
 
 #TL;DR_:
@@ -35,7 +34,7 @@ In most security models of hardware wallets, physical attacks are often consider
 The Donjon recently found a physical attack on the Trezor One hardware wallet, which has been responsibly disclosed to Trezor. The identified vulnerability allows an attacker with physical access to get the master seed protected by the wallet if no strong passphrase is set. After a deep evaluation of this vulnerability, it appears very clearly that this vulnerability cannot be patched without making a complete hardware redesign of the hardware wallet. When we first talked about this attack, it has been said that the attack was too specialized, not realistic and hard to reproduce. At first, it required heavy and expensive equipment (worth more than $100.000) with a complete day of work for a hardware security expert. Note: this is the typical setup we use for challenging the security of our own hardware wallets.
 
 <p align="center">
-<img src="/assets/trezor-extract/sadtrezor.jpg" width="400">
+<img src="/assets/trezor-extract/sadtrezor.jpg" width="360" height="415" >
 </p>
 <center> <i>Trezor One device</i> </center><br/>
 
@@ -59,7 +58,7 @@ However, for the sake of transparency, here is a high-level description of the a
 - **Attack is very reliable: 100% success on ~20 devices**
 
 <center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/q8jednQQFx4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/q8jednQQFx4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 Seed extraction
 </center>
 

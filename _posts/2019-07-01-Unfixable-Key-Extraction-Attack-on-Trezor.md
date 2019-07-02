@@ -34,7 +34,7 @@ In most security models of hardware wallets, physical attacks are often consider
 The Donjon recently found a physical attack on the Trezor One hardware wallet, which has been responsibly disclosed to Trezor. The identified vulnerability allows an attacker with physical access to get the master seed protected by the wallet if no strong passphrase is set. After a deep evaluation of this vulnerability, it appears very clearly that this vulnerability cannot be patched without making a complete hardware redesign of the hardware wallet. When we first talked about this attack, it has been said that the attack was too specialized, not realistic and hard to reproduce. At first, it required heavy and expensive equipment (worth more than $100.000) with a complete day of work for a hardware security expert. Note: this is the typical setup we use for challenging the security of our own hardware wallets.
 
 <p align="center">
-<img src="/assets/trezor-extract/sadtrezor.jpg" width="360" height="415" >
+<img src="/assets/trezor-extract/sadtrezor.jpg">
 </p>
 <center> <i>Trezor One device</i> </center><br/>
 
@@ -71,7 +71,8 @@ Security requires awareness: don’t underestimate the feasibility of hardware a
 
 ## Mitigation
 From our understanding, **there’s no way to patch it**, there is only one mitigation: the use of a long passphrase. In this context, as the seed itself can be considered as public, the passphrase should be long enough to prevent brute-force or dictionary attacks. 
-In this context, the seed can be considered to be public and the whole security relies on the passphrase. The mnemonics + passphrase derivation follows the BIP39 standard. BIP39 uses PBKDF2 function to derive the mnemonics + passphrase into the seed.
+
+Consequently the whole security relies on the passphrase. The mnemonics + passphrase derivation follows the BIP39 standard. BIP39 uses PBKDF2 function to derive the mnemonics + passphrase into the seed.
 
 - PBKDF2 is a useful function allowing to derive a low-entropy password into a larger cryptographic key. The lack of entropy is balanced by a CPU intensive derivation function preventing brute-force.
 - The main problem in BIP39 is that the number of iterations is set to **only 2048**, which is far lower than the last NIST recommendation (from 2016) **which is 10.000** (https://pages.nist.gov/800-63-3/sp800-63b.html#sec5).
@@ -85,6 +86,9 @@ This attack has been disclosed to Trezor in december 2018 and the attack path ha
 We didn't get any bounty for this responsible disclosure. We obtained 2 other small bounties for the [Side Channel Attack]({% post_url 2019-06-17-Breaking-Trezor-One-with-SCA %}) on the PIN verification and the vulnerability on the password manager.
 It seems Trezor was already aware that Physical seed extraction would be possible. Consequently, we only demonstrated the feasability.
 
+<p align="center">
+<img src="/assets/trezor-extract/thankledger.png" >
+</p>
 
 ## Takeaway
 A physical access to a Trezor One, Trezor T, Keepkey, or B-wallet allows an attacker to extract the 12/24-words within a few minutes using a low-cost setup (~100$), with a very high reproducibility (we had 100% success). We finally proved it can be fully automated allowing anyone to use it in case someone would sell the Extraktor box (similar to old Playstation hacks). 

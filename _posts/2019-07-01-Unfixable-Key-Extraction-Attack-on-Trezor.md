@@ -104,7 +104,7 @@ To our knowledge, there are 4 physical seed extraction techniques on Trezor or c
 
 All these research led to a physical key extraction from Trezor One or Keepkey. They have been patched using a firmware upgrade.
 
-The main differences with our new approach are the following:
+Our new approach also allows seed extraction but is a bit different:
 - It also applies on Trezor T
 - It can not be patched by a firmware upgrade
 - It's very reliable and particularly cheap

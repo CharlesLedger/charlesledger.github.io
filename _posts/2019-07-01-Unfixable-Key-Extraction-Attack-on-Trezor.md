@@ -17,6 +17,11 @@ The Donjon, Ledger’s security team, recently spent some time and resources to 
 
 The Trezor-based hardware wallets were part of our evaluation targets. We found these devices to be especially interesting since **the firmware is open source**. The chip itself is **closed source as well as the low-level functions hidden in the flash**. 
 
+<p align="center">
+<img src="/assets/trezor-extract/keptkey-trezorT.png">
+</p>
+<center> <i>Keepkey - Trezor T</i> </center><br/>
+
 We are experienced in physical attacks and because of the design of these wallets, we thought it was possible to extract the seeds from the devices. We just wanted to find out how difficult it is. In this blogpost, we only focus on the following attack scenario: the attacker steals a hardware wallet, what can he do?
 
 In a [previous blogpost]({% post_url 2019-06-17-Breaking-Trezor-One-with-SCA %}), we detailed a vulnerability consisting of retrieving the PIN value from a stolen device, using Side Channel Analysis. This vulnerability has been patched, and SatoshiLabs gave us a bounty for it. A more comprehensive study has been presented at a scientific conference: SSTIC (conference paper [here]("https://www.sstic.org/media/SSTIC2019/SSTIC-actes/side_channel_assessment_hardware_wallets/SSTIC2019-Article-side_channel_assessment_hardware_wallets-guillemet_san-pedro_servant.pdf")).
@@ -90,11 +95,6 @@ It seems Trezor was already aware that Physical seed extraction would be possibl
 <img src="/assets/trezor-extract/thankledger.png" >
 </p>
 
-## Takeaway
-A physical access to a Trezor One, Trezor T, Keepkey, or B-wallet allows an attacker to extract the 12/24-words within a few minutes using a low-cost setup (~100$), with a very high reproducibility (we had 100% success). We finally proved it can be fully automated allowing anyone to use it in case someone would sell the Extraktor box (similar to old Playstation hacks). 
-**This attack can not be fixed**.
-The only mitigation is to use a **strong** passphrase: we recommend 37 random characters to maintain the same level of security.
-
 ## Related work
 To our knowledge, there are 4 physical seed extraction techniques on Trezor or clones:
 - <a  href="https://colinoflynn.com/2019/03/glitching-trezor-using-emfi-through-the-enclosure/">Colin O'Flynn: EMFI through the enclosure </a>
@@ -108,3 +108,10 @@ Our new approach also allows seed extraction but is a bit different:
 - It also applies on Trezor T
 - It can not be patched by a firmware upgrade
 - It's very reliable and particularly cheap
+
+
+## Takeaway
+A physical access to a Trezor One, Trezor T, Keepkey, or B-wallet allows an attacker to extract the 12/24-words within a few minutes using a low-cost setup (~100$), with a very high reproducibility (we had 100% success). We finally proved it can be fully automated allowing anyone to use it in case someone would sell the Extraktor box (similar to old Playstation hacks). 
+**This attack can not be fixed**.
+The only mitigation is to use a **strong** passphrase: we recommend 37 random characters to maintain the same level of security.
+

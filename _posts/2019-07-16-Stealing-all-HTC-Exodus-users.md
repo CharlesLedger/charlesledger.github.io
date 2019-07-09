@@ -7,12 +7,12 @@ featured-img: segascope
 ---
 
 
-# TL;DR
+## TL;DR
 
 An attacker with a code execution on Android (anyone) could steal the seed of all HTC Exodus users.
 
 
-#Intro
+# Intro
 
 In 2018 HTC launched [EXODUS 1](https://www.htcexodus.com/), its first blockchain-oriented smartphone. Compared to other smartphones, it comes with a Hardware Wallet functionality where the [master seed](https://bitcoin.org/en/glossary/hd-wallet-seed) is stored within a secure enclave.
 This ensures an attacker, able to root the phone, would not have access to the master seed - it’s encrypted within the enclave.
@@ -21,10 +21,8 @@ We were especially interested in this (hardware) wallet since it offers a nice f
 It consists in an original mechanism allowing to enforce the backup of the seed. The seed is split into five shares and each share is sent to a trusted contact. Should the user lose their phone, they will be able to reconstruct the seed by asking three of its five trusted contacts to communicate their shares. The number of shares (5) and the threshold (3) are fixed.
 
 We will start by providing more details on the implementation of the Social Key Recovery. Then, we will present two methods of attack:
-The first one demonstrates how to lower the threshold from three to two.
-The second demonstrates how to lower the threshold from three to one meaning that any of your trusted contact could retrieve the master seed and access your funds.
-
-
+- The first one demonstrates how to lower the threshold from three to two.
+- The second demonstrates how to lower the threshold from three to one meaning that any of your trusted contact could retrieve the master seed and access your funds.
 
 
 ## Social Key Recovery
@@ -32,27 +30,28 @@ The second demonstrates how to lower the threshold from three to one meaning tha
 The master seed backup is a common problem for Hardware Wallet users.
 From this seed only, every user secrets are generated. This seed must be backuped, to ensure that the loss of your wallet does not implies the loss of your secrets: they can be restored on a new wallet from the backed up seed.
 
-**How can you backup a seed?** Most of Hardware Wallets propose a paper recovery sheet (Fig. 1), on which the user has to write down its BIP39 mnemonics (the mnemonics are a way to represent your seed into human readable words).
+**How can you backup a seed?** 
+Most of Hardware Wallets propose a paper recovery sheet (Fig. 1), on which the user has to write down its BIP39 mnemonics (the mnemonics are a way to represent your seed into human readable words).
 But keeping this paper sheet safe is not an easy task (Fig. 2), and some dedicated devices have been designed for this purpose. For instance, a cryptosteel might be used, to prevent your mnemonic seed from deterioration.
 
-![Cryptosteel](pictures/cryptosteel.png)
+![Cryptosteel](htc-exodus/cryptosteel.png)
 
 An alternative solution could be to own a backup Hardware Wallet, initialized with the same seed.
 There is not however a perfect solution, that would address all the problems.
 
-![Ledger Recovery Sheet](pictures/ledger-recovery-sheet.png)
+![Ledger Recovery Sheet](htc-exodus/ledger-recovery-sheet.png)
 
-<p align="center">Fig. 1 : Ledger Recovery Sheet</p>
+<p align="center">Fig. 1: Ledger Recovery Sheet</p>
 
-![Ledger Recovery Sheet](pictures/gridplus.png)
+![Ledger Recovery Sheet](htc-exodus/gridplus.png)
 
-<p align="center">Fig. 2 : The recovery sheet storage in practice</p>
+<p align="center">Fig. 2: The recovery sheet storage in practice</p>
 
 HTC EXODUS 1 comes with its own backup mechanism: Social Key Recovery. The user’s seed is split into **shares** which are sent to trusted contacts. The knowledge of 1 or 2 **shares** does not bring any information about the seed. The sole knowledge of 3 **shares** allow to reconstruct the complete seed. Within the scheme the master seed is never fully backed-up in a single location.
 
 HTC Hardware Wallet takes the form of an Android application named Zion, along with a trustlet (a secured application which is executed within the smartphone _secure OS_) which stores the seed and performs sensitive operations (Fig. 2). The secret sharing is also computed within the trustlet: in the following, the studied mechanism is implemented in the _secure OS_.
 
-![Zion Hardware Wallet architecture](pictures/architecture.svg)
+![Zion Hardware Wallet architecture](htc-exodus/architecture.svg)
 <p align="center">Fig. 3 : Architecture générale de Zion</p>
 
 ## Shamir's Secret Sharing
@@ -91,7 +90,7 @@ Any subset of $k$ participants is hence able to reconstruct $P(x)$, and then com
 
 One important thing to mention is that all the coefficients $a_1, ..., a_{k-1}$ during the splitting must remain secret. Once the splitting is done, these coefficients are no longer available. 
 
-![Shamir Secret Sharing](pictures/sss.png)
+![Shamir Secret Sharing](htc-exodus/sss.png)
 
 This problem can be solved by:
 

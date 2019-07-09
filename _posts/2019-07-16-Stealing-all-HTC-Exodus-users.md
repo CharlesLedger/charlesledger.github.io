@@ -34,16 +34,16 @@ From this seed only, every user secrets are generated. This seed must be backupe
 Most of Hardware Wallets propose a paper recovery sheet (Fig. 1), on which the user has to write down its BIP39 mnemonics (the mnemonics are a way to represent your seed into human readable words).
 But keeping this paper sheet safe is not an easy task (Fig. 2), and some dedicated devices have been designed for this purpose. For instance, a cryptosteel might be used, to prevent your mnemonic seed from deterioration.
 
-![Cryptosteel](htc-exodus/cryptosteel.png)
+![Cryptosteel](assets/htc-exodus/cryptosteel.png)
 
 An alternative solution could be to own a backup Hardware Wallet, initialized with the same seed.
 There is not however a perfect solution, that would address all the problems.
 
-![Ledger Recovery Sheet](htc-exodus/ledger-recovery-sheet.png)
+![Ledger Recovery Sheet](assets/htc-exodus/ledger-recovery-sheet.png)
 
 <p align="center">Fig. 1: Ledger Recovery Sheet</p>
 
-![Ledger Recovery Sheet](htc-exodus/gridplus.png)
+![Ledger Recovery Sheet](assets/htc-exodus/gridplus.png)
 
 <p align="center">Fig. 2: The recovery sheet storage in practice</p>
 
@@ -51,7 +51,7 @@ HTC EXODUS 1 comes with its own backup mechanism: Social Key Recovery. The user�
 
 HTC Hardware Wallet takes the form of an Android application named Zion, along with a trustlet (a secured application which is executed within the smartphone _secure OS_) which stores the seed and performs sensitive operations (Fig. 2). The secret sharing is also computed within the trustlet: in the following, the studied mechanism is implemented in the _secure OS_.
 
-![Zion Hardware Wallet architecture](htc-exodus/architecture.svg)
+![Zion Hardware Wallet architecture](assets/htc-exodus/architecture.svg)
 <p align="center">Fig. 3 : Architecture générale de Zion</p>
 
 ## Shamir's Secret Sharing
@@ -90,7 +90,7 @@ Any subset of $k$ participants is hence able to reconstruct $P(x)$, and then com
 
 One important thing to mention is that all the coefficients $a_1, ..., a_{k-1}$ during the splitting must remain secret. Once the splitting is done, these coefficients are no longer available. 
 
-![Shamir Secret Sharing](htc-exodus/sss.png)
+![Shamir Secret Sharing](assets/htc-exodus/sss.png)
 
 This problem can be solved by:
 

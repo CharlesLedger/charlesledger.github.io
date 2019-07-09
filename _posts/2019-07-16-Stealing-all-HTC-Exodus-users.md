@@ -1,15 +1,14 @@
 ---
 layout: post
-title: Stealing the funds of all HTC Exodus users
+title: Funds are SSafu: Stealing the funds of all HTC Exodus users
 summary: A small flaw in a Shamir Secret Sharing allows an attacker to steal the funds of all HTC Exodus users remotely without any interaction with Exoodus phone.
 featured-img: segascope
 
 ---
 
 
-# HTC EXODUS 1: Funds are SSAFU?
-
 # TL;DR
+
 An attacker with a code execution on Android (anyone) could steal the seed of all HTC Exodus users.
 
 
@@ -18,7 +17,7 @@ An attacker with a code execution on Android (anyone) could steal the seed of al
 In 2018 HTC launched [EXODUS 1](https://www.htcexodus.com/), its first blockchain-oriented smartphone. Compared to other smartphones, it comes with a Hardware Wallet functionality where the [master seed](https://bitcoin.org/en/glossary/hd-wallet-seed) is stored within a secure enclave.
 This ensures an attacker, able to root the phone, would not have access to the master seed - it’s encrypted within the enclave.
 
-    We were especially interested in this (hardware) wallet since it offers a nice feature: Social Key Recovery. In this blogpost, we will focus on this EXODUS 1 specific feature: [Social Key Recovery](“https://www.htcexodus.com/uk/support/exodus-one/faq/what-is-social-key-recovery-and-why-use-it.html”).
+We were especially interested in this (hardware) wallet since it offers a nice feature: Social Key Recovery. In this blogpost, we will focus on this EXODUS 1 specific feature: [Social Key Recovery](“https://www.htcexodus.com/uk/support/exodus-one/faq/what-is-social-key-recovery-and-why-use-it.html”).
 It consists in an original mechanism allowing to enforce the backup of the seed. The seed is split into five shares and each share is sent to a trusted contact. Should the user lose their phone, they will be able to reconstruct the seed by asking three of its five trusted contacts to communicate their shares. The number of shares (5) and the threshold (3) are fixed.
 
 We will start by providing more details on the implementation of the Social Key Recovery. Then, we will present two methods of attack:

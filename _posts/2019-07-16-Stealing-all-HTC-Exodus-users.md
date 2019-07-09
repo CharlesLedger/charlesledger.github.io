@@ -3,6 +3,7 @@ layout: post
 title: Funds are SSafu - Stealing the funds of all HTC Exodus users
 summary: A small flaw in a Shamir Secret Sharing allows an attacker to steal the funds of all HTC Exodus users remotely without any interaction with Exoodus phone.
 featured-img: segascope
+use_math: true
 
 ---
 

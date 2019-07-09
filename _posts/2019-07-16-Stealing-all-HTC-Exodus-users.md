@@ -313,18 +313,17 @@ print(mnemonic.Mnemonic('english').to_mnemonic(seed))
 
 ## Responsible disclosure
 
-On 2019.02.15, we disclosed to HTC Exodus all the above-mentioned flaws.
+**On 2019.02.15**, we disclosed to HTC Exodus all the above-mentioned flaws.
 
-Two months later, other vulnerabilities (memory corruption inside the touchscreen driver, inside the trusted UI and in the ETH/BTC transaction parsing)  were also disclosed. They all have already been found and fixed by HTC Security Team.HTC.
+**Two months later**, other vulnerabilities (memory corruption inside the touchscreen driver, inside the trusted UI and in the ETH/BTC transaction parsing)  were also disclosed. They all have already been found and fixed by HTC Security Team.HTC.
 
-On 2019-03-05, HTC Exodus team was in Paris and took this opportunity to visit us. They even got the chance to enter the Donjon
+**On 2019-03-05**, HTC Exodus team was in Paris and took this opportunity to visit us. They even got the chance to enter the Donjon
 
-On 2019.03.25, HTC issued a new firmware (1.62.2401.7) addressing all these issues. The SSS patch consists in using a robust PRNG and save every generated share inside the secure storage. These shares are used whenever a new trusted contact is added,
+**On 2019.03.25**, HTC issued a new firmware (1.62.2401.7) addressing all these issues. The SSS patch consists in using a robust PRNG and save every generated share inside the secure storage. These shares are used whenever a new trusted contact is added,
 
-On 2019.04.05, HTC Exodus started a bounty program for Zion Hardware Wallet.
+**On 2019.04.05**, HTC Exodus started a bounty program for Zion Hardware Wallet.
 
-
-After these discussions HTC indicated us, this vulnerability disclosure triggered the creation of their own bounty program. Nevertheless, we didn’t receive any bounty for this work, but we got Exodus shirts and stickers when they visited us. :) 
+After these discussions HTC indicated us, this vulnerabilities disclosure triggered the creation of their own bounty program. Nevertheless, we didn’t receive any bounty for this work. But we got Exodus shirts and stickers when they visited us. :) 
 
 ## Takeaway
 
@@ -335,4 +334,4 @@ These vulnerabilities have been correctly patched.
 
 **Nevertheless, we strongly encourage all EXODUS 1 users who have used the Social Key Recovery to change their seed (and migrate their funds). Indeed, their seed could have been compromised earlier or could still be compromised via a trusted contact who wouldn’t update Zion.**
 
-
+

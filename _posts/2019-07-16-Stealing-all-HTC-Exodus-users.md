@@ -2,7 +2,7 @@
 layout: post
 title: Funds are SSafu - Stealing the funds of all HTC Exodus users
 summary: A small flaw in a Shamir Secret Sharing allows an attacker to steal the funds of all HTC Exodus users remotely without any interaction with Exoodus phone.
-featured-img: segascope
+featured-img: htc-ssafu
 
 ---
 
@@ -10,6 +10,7 @@ featured-img: segascope
 ## TL;DR
 
 An attacker with a code execution on Android (anyone) could steal the seed of all HTC Exodus users.
+We strongly recommend HTC Exodus users to move their funds to another seed if they used the Social Key Recovery function.
 
 
 # Intro
@@ -34,27 +35,40 @@ From this seed only, every user secrets are generated. This seed must be backupe
 Most of Hardware Wallets propose a paper recovery sheet (Fig. 1), on which the user has to write down its BIP39 mnemonics (the mnemonics are a way to represent your seed into human readable words).
 But keeping this paper sheet safe is not an easy task (Fig. 2), and some dedicated devices have been designed for this purpose. For instance, a cryptosteel might be used, to prevent your mnemonic seed from deterioration.
 
-![Cryptosteel](/assets/htc-exodus/cryptosteel.png)
+
+<p align="center">
+<img src = "/assets/htc-exodus/cryptosteel.png">
+<br/>
+Fig. 1: Cryptosteel - device to backup a seed
+</p>
 
 An alternative solution could be to own a backup Hardware Wallet, initialized with the same seed.
 There is not however a perfect solution, that would address all the problems.
 
-![Ledger Recovery Sheet](/assets/htc-exodus/ledger-recovery-sheet.png)
+<p align="center">
+<img src = "/assets/htc-exodus/ledger-recovery-sheet.png">
+<br/>
+Fig. 2: Ledger Recovery Sheet
+</p>
+
 
 <p align="center">Fig. 1: Ledger Recovery Sheet</p>
 
 <p align="center">
 <img src="/assets/htc-exodus/gridplus.png">
 <br/>
-Fig. 2: The recovery sheet storage in practice
+Fig. 3: The recovery sheet storage in practice
 </p>
 
 HTC EXODUS 1 comes with its own backup mechanism: Social Key Recovery. The user’s seed is split into **shares** which are sent to trusted contacts. The knowledge of 1 or 2 **shares** does not bring any information about the seed. The sole knowledge of 3 **shares** allow to reconstruct the complete seed. Within the scheme the master seed is never fully backed-up in a single location.
 
 HTC Hardware Wallet takes the form of an Android application named Zion, along with a trustlet (a secured application which is executed within the smartphone _secure OS_) which stores the seed and performs sensitive operations (Fig. 2). The secret sharing is also computed within the trustlet: in the following, the studied mechanism is implemented in the _secure OS_.
 
-![Zion Hardware Wallet architecture](/assets/htc-exodus/architecture.svg)
-<p align="center">Fig. 3 : Architecture générale de Zion</p>
+<p align="center">
+<img src = "/assets/htc-exodus/architecture.svg">
+<br/>
+Fig. 4: Zion - Architecture overview </p>
+</p>
 
 ## Shamir's Secret Sharing
 

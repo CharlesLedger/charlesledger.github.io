@@ -22,7 +22,8 @@ This ensures an attacker, able to root the phone, would not have access to the m
 Fig. 1: HTC Exodus device
 </p>
 
-We were especially interested in this (hardware) wallet since it offers a nice feature: Social Key Recovery. In this blogpost, we will focus on this EXODUS 1 specific feature: [Social Key Recovery](“https://www.htcexodus.com/uk/support/exodus-one/faq/what-is-social-key-recovery-and-why-use-it.html”).
+We were especially interested in this (hardware) wallet since it offers a nice feature: Social Key Recovery. In this blogpost, we will focus on this EXODUS 1 specific feature: [Social Key Recovery](https://www.htcexodus.com/uk/support/exodus-one/faq/what-is-social-key-recovery-and-why-use-it.html).
+
 It consists in an original mechanism allowing to enforce the backup of the seed. The seed is split into five shares and each share is sent to a trusted contact. Should the user lose their phone, they will be able to reconstruct the seed by asking three of its five trusted contacts to communicate their shares. The number of shares (5) and the threshold (3) are fixed.
 
 We will start by providing more details on the implementation of the Social Key Recovery. Then, we will present two methods of attack:
@@ -75,10 +76,9 @@ Fig. 5: Zion - Architecture overview
 
 ## Shamir's Secret Sharing
 
-Social Key Recovery is based on Shamir's Secret Sharing (SSS). This elegant [scheme](“https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing”) allows to splitting a secret into $n$ shares, and to define a threshold $k$ as a minimal number of necessary shares to reconstruct the initial secret. An attacker able to retrieve $k-1$ shares obtains no information about the secret.
+Social Key Recovery is based on Shamir's Secret Sharing (SSS). This elegant [scheme](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing) allows to splitting a secret into $n$ shares, and to define a threshold $k$ as a minimal number of necessary shares to reconstruct the initial secret. An attacker able to retrieve $k-1$ shares obtains no information about the secret.
 
-
-**For understanding, the security flaw, let’s introduce briefly the SSS principles (from [Wikipedia](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing)).**
+**For understanding, the security flaw, let’s introduce briefly the SSS principles .**
 
 The main mathematical concept used behind SSS is the following:
 

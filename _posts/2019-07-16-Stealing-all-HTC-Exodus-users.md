@@ -7,9 +7,7 @@ featured-img: htc-ssafu
 ---
 
 
-## TL;DR
-
-An attacker with a code execution on Android (anyone) could steal the seed of all HTC Exodus users.
+_TL;DR_: An attacker with a code execution on Android (anyone) could steal the seed of all HTC Exodus users.
 We strongly recommend HTC Exodus users to move their funds to another seed if they used the Social Key Recovery function.
 
 

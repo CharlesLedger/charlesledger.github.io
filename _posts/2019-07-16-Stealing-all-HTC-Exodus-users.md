@@ -43,9 +43,11 @@ There is not however a perfect solution, that would address all the problems.
 
 <p align="center">Fig. 1: Ledger Recovery Sheet</p>
 
+<p align="center">
 ![Ledger Recovery Sheet](/assets/htc-exodus/gridplus.png)
 
-<p align="center">Fig. 2: The recovery sheet storage in practice</p>
+Fig. 2: The recovery sheet storage in practice
+</p>
 
 HTC EXODUS 1 comes with its own backup mechanism: Social Key Recovery. The user’s seed is split into **shares** which are sent to trusted contacts. The knowledge of 1 or 2 **shares** does not bring any information about the seed. The sole knowledge of 3 **shares** allow to reconstruct the complete seed. Within the scheme the master seed is never fully backed-up in a single location.
 

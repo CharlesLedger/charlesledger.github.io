@@ -66,7 +66,7 @@ HTC Hardware Wallet takes the form of an Android application named Zion, along w
 <p align="center">
 <img src = "/assets/htc-exodus/architecture.svg">
 <br/>
-Fig. 4: Zion - Architecture overview </p>
+Fig. 4: Zion - Architecture overview 
 </p>
 
 ## Shamir's Secret Sharing

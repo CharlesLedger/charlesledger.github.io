@@ -44,8 +44,7 @@ There is not however a perfect solution, that would address all the problems.
 <p align="center">Fig. 1: Ledger Recovery Sheet</p>
 
 <p align="center">
-![Ledger Recovery Sheet](/assets/htc-exodus/gridplus.png)
-
+<img src="/assets/htc-exodus/gridplus.png">
 Fig. 2: The recovery sheet storage in practice
 </p>
 

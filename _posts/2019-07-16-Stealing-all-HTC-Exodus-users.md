@@ -52,7 +52,6 @@ Fig. 2: Ledger Recovery Sheet
 </p>
 
 
-<p align="center">Fig. 1: Ledger Recovery Sheet</p>
 
 <p align="center">
 <img src="/assets/htc-exodus/gridplus.png">

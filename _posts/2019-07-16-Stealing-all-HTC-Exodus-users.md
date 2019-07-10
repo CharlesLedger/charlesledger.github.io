@@ -3,7 +3,6 @@ layout: post
 title: Funds are SSafu - Stealing the funds of all HTC Exodus users
 summary: A small flaw in a Shamir Secret Sharing allows an attacker to steal the funds of all HTC Exodus users remotely without any interaction with Exoodus phone.
 featured-img: segascope
-use_math: true
 
 ---
 
@@ -59,8 +58,6 @@ HTC Hardware Wallet takes the form of an Android application named Zion, along w
 
 Social Key Recovery is based on Shamir's Secret Sharing (SSS). This elegant [scheme](“https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing”) allows to splitting a secret into $n$ shares, and to define a threshold $k$ as a minimal number of necessary shares to reconstruct the initial secret. An attacker able to retrieve $k-1$ shares obtains no information about the secret.
 
-The SSS implementation used by HTC is inspired from an open source project, and available [here](https://github.com/dsprenkels/sss/).
-This open source implementation generates the shares all at once. One cannot request for a single share. In order to allow trusted contact to be added whenever, HTC modified the implementation, to the expense of security.
 
 **For understanding, the security flaw, let’s introduce briefly the SSS principles (from [Wikipedia](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing)).**
 
@@ -97,6 +94,10 @@ This problem can be solved by:
 
 - either storing the coefficients within a secure storage (JB ca fait bizarre comme terme),
 - or only keeping the PRNG state before the splitting.
+
+
+The SSS implementation used by HTC is inspired from an open source project, and available [here](https://github.com/dsprenkels/sss/).
+This open source implementation generates the shares all at once. One cannot request for a single share. In order to allow trusted contact to be added whenever, HTC modified the implementation, to the expense of security.
 
 HTC chose to keep the PRNG state. But the implementation also uses a DRBG: This means that the output is predictable and the generated coefficients will always be the same. The seed used by DRBG (ie the PRNG state) is stored inside an encrypted partition, only available for the _secure OS_.
 

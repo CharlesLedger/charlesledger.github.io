@@ -45,6 +45,7 @@ There is not however a perfect solution, that would address all the problems.
 
 <p align="center">
 <img src="/assets/htc-exodus/gridplus.png">
+<br/>
 Fig. 2: The recovery sheet storage in practice
 </p>
 

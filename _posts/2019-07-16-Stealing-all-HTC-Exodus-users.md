@@ -18,6 +18,12 @@ We strongly recommend HTC Exodus users to move their funds to another seed if th
 In 2018 HTC launched [EXODUS 1](https://www.htcexodus.com/), its first blockchain-oriented smartphone. Compared to other smartphones, it comes with a Hardware Wallet functionality where the [master seed](https://bitcoin.org/en/glossary/hd-wallet-seed) is stored within a secure enclave.
 This ensures an attacker, able to root the phone, would not have access to the master seed - it’s encrypted within the enclave.
 
+<p align="center">
+<img src = "/assets/htc-exodus/exodus1.jpg">
+<br/>
+Fig. 1: HTC Exodus device
+</p>
+
 We were especially interested in this (hardware) wallet since it offers a nice feature: Social Key Recovery. In this blogpost, we will focus on this EXODUS 1 specific feature: [Social Key Recovery](“https://www.htcexodus.com/uk/support/exodus-one/faq/what-is-social-key-recovery-and-why-use-it.html”).
 It consists in an original mechanism allowing to enforce the backup of the seed. The seed is split into five shares and each share is sent to a trusted contact. Should the user lose their phone, they will be able to reconstruct the seed by asking three of its five trusted contacts to communicate their shares. The number of shares (5) and the threshold (3) are fixed.
 
@@ -39,7 +45,7 @@ But keeping this paper sheet safe is not an easy task (Fig. 2), and some dedicat
 <p align="center">
 <img src = "/assets/htc-exodus/cryptosteel.png">
 <br/>
-Fig. 1: Cryptosteel - device to backup a seed
+Fig. 2: Cryptosteel - device to backup a seed
 </p>
 
 An alternative solution could be to own a backup Hardware Wallet, initialized with the same seed.
@@ -48,7 +54,7 @@ There is not however a perfect solution, that would address all the problems.
 <p align="center">
 <img src = "/assets/htc-exodus/ledger-recovery-sheet.png">
 <br/>
-Fig. 2: Ledger Recovery Sheet
+Fig. 3: Ledger Recovery Sheet
 </p>
 
 
@@ -56,7 +62,7 @@ Fig. 2: Ledger Recovery Sheet
 <p align="center">
 <img src="/assets/htc-exodus/gridplus.png">
 <br/>
-Fig. 3: The recovery sheet storage in practice
+Fig. 4: The recovery sheet storage in practice
 </p>
 
 HTC EXODUS 1 comes with its own backup mechanism: Social Key Recovery. The user’s seed is split into **shares** which are sent to trusted contacts. The knowledge of 1 or 2 **shares** does not bring any information about the seed. The sole knowledge of 3 **shares** allow to reconstruct the complete seed. Within the scheme the master seed is never fully backed-up in a single location.
@@ -66,7 +72,7 @@ HTC Hardware Wallet takes the form of an Android application named Zion, along w
 <p align="center">
 <img src = "/assets/htc-exodus/architecture.svg">
 <br/>
-Fig. 4: Zion - Architecture overview 
+Fig. 5: Zion - Architecture overview 
 </p>
 
 ## Shamir's Secret Sharing

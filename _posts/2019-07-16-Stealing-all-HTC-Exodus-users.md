@@ -1,20 +1,20 @@
 ---
 layout: post
-title: Funds are SSafu - Stealing the funds of all HTC Exodus users
-summary: A small flaw in a Shamir Secret Sharing allows an attacker to steal the funds of all HTC Exodus users remotely without any interaction with Exoodus phone.
+title: Funds are SSSAFU - Stealing the funds of all HTC Exodus users
+summary: A small flaw in a Shamir Secret Sharing allows an attacker to steal the funds of all HTC Exodus users remotely without any interaction with Exodus phone.
 featured-img: htc-ssafu
 
 ---
 
 
-_TL;DR_: An attacker with a code execution on Android (anyone) could steal the seed of all HTC Exodus users.
-We strongly recommend HTC Exodus users to move their funds to another seed if they used the Social Key Recovery function.
+_TL;DR_: An attacker with a code execution on Android (anyone) could steal the seed of all HTC Exodus users who used the Social Ke Recovery feature.
+We strongly recommend HTC Exodus users to move their funds to another seed if they used the Social Key Recovery function before April 2019.
 
 
 # Intro
 
 In 2018 HTC launched [EXODUS 1](https://www.htcexodus.com/), its first blockchain-oriented smartphone. Compared to other smartphones, it comes with a Hardware Wallet functionality where the [master seed](https://bitcoin.org/en/glossary/hd-wallet-seed) is stored within a secure enclave.
-This ensures an attacker, able to root the phone, would not have access to the master seed - it’s encrypted within the enclave.
+This ensures an attacker, even with root privileges, does not have access to the master seed - it’s encrypted within the enclave.
 
 <p align="center">
 <img src = "/assets/htc-exodus/exodus1.jpg">
@@ -22,13 +22,13 @@ This ensures an attacker, able to root the phone, would not have access to the m
 Fig. 1: HTC Exodus device
 </p>
 
-We were especially interested in this (hardware) wallet since it offers a nice feature: Social Key Recovery. In this blogpost, we will focus on this EXODUS 1 specific feature: [Social Key Recovery](https://www.htcexodus.com/uk/support/exodus-one/faq/what-is-social-key-recovery-and-why-use-it.html).
+We were especially interested in this (hardware) wallet since it offers a nice feature: [Social Key Recovery](https://www.htcexodus.com/uk/support/exodus-one/faq/what-is-social-key-recovery-and-why-use-it.html). In this blogpost, we will focus on this EXODUS 1 specific feature.
 
 It consists in an original mechanism allowing to enforce the backup of the seed. The seed is split into five shares and each share is sent to a trusted contact. Should the user lose their phone, they will be able to reconstruct the seed by asking three of its five trusted contacts to communicate their shares. The number of shares (5) and the threshold (3) are fixed.
 
 We will start by providing more details on the implementation of the Social Key Recovery. Then, we will present two methods of attack:
-- The first one demonstrates how to lower the threshold from three to two.
-- The second demonstrates how to lower the threshold from three to one meaning that any of your trusted contact could retrieve the master seed and access your funds.
+- The first one demonstrates how to lower the threshold from three trusted contacts to two.
+- The second demonstrates how to lower the threshold from three trusted contacts to one, meaning that any of your trusted contact could retrieve the master seed and access your funds.
 
 
 ## Social Key Recovery
@@ -37,8 +37,8 @@ The master seed backup is a common problem for Hardware Wallet users.
 From this seed only, every user secrets are generated. This seed must be backuped, to ensure that the loss of your wallet does not implies the loss of your secrets: they can be restored on a new wallet from the backed up seed.
 
 **How can you backup a seed?** 
-Most of Hardware Wallets propose a paper recovery sheet (Fig. 1), on which the user has to write down its BIP39 mnemonics (the mnemonics are a way to represent your seed into human readable words).
-But keeping this paper sheet safe is not an easy task (Fig. 2), and some dedicated devices have been designed for this purpose. For instance, a cryptosteel might be used, to prevent your mnemonic seed from deterioration.
+Most of Hardware Wallets propose a paper recovery sheet (Fig. 3), on which the user has to write down its BIP39 mnemonics (the mnemonics are a way to represent your seed into human readable words).
+But keeping this paper sheet safe is not an easy task, and some dedicated devices have been designed for this purpose (Fig. 2). For instance, a cryptosteel might be used, to prevent your mnemonic seed from deterioration.
 
 
 <p align="center">
@@ -66,7 +66,7 @@ Fig. 4: The recovery sheet storage in practice
 
 HTC EXODUS 1 comes with its own backup mechanism: Social Key Recovery. The user’s seed is split into **shares** which are sent to trusted contacts. The knowledge of 1 or 2 **shares** does not bring any information about the seed. The sole knowledge of 3 **shares** allow to reconstruct the complete seed. Within the scheme the master seed is never fully backed-up in a single location.
 
-HTC Hardware Wallet takes the form of an Android application named Zion, along with a trustlet (a secured application which is executed within the smartphone _secure OS_) which stores the seed and performs sensitive operations (Fig. 2). The secret sharing is also computed within the trustlet: in the following, the studied mechanism is implemented in the _secure OS_.
+HTC Hardware Wallet takes the form of an Android application named Zion, along with a trustlet (a secured application which is executed within the smartphone _secure OS_) which stores the seed and performs sensitive operations (Fig. 5). The secret sharing is also computed within the trustlet: in the following, the studied mechanism is implemented in the _secure OS_.
 
 <p align="center">
 <img src = "/assets/htc-exodus/architecture.svg">
@@ -111,14 +111,14 @@ One important thing to mention is that all the coefficients $a_1, ..., a_{k-1}$ 
 
 This problem can be solved by:
 
-- either storing the coefficients within a secure storage (JB ca fait bizarre comme terme),
+- either securely storing the polynomial coefficients, so that they can be restored later to generate other shares,
 - or only keeping the PRNG state before the splitting.
 
 
-The SSS implementation used by HTC is inspired from an open source project, and available [here](https://github.com/dsprenkels/sss/).
+The SSS implementation used by HTC is inspired from an open source project, and is available [here](https://github.com/dsprenkels/sss/).
 This open source implementation generates the shares all at once. One cannot request for a single share. In order to allow trusted contact to be added whenever, HTC modified the implementation, to the expense of security.
 
-HTC chose to keep the PRNG state. But the implementation also uses a DRBG: This means that the output is predictable and the generated coefficients will always be the same. The seed used by DRBG (ie the PRNG state) is stored inside an encrypted partition, only available for the _secure OS_.
+HTC chose to keep the PRNG seed. But the implementation also uses a DRBG: This ensures the output is predictable and the generated coefficients will always be the same. The seed used by DRBG (ie the PRNG state) is stored inside an encrypted partition, only available for the _secure OS_.
 
 ## Random Number Generator:
 
@@ -181,9 +181,8 @@ The shared secret is the seed of the wallet, used to derive all the keys for eve
 
 ### Initialization
 
-If the PRNG seed  $Entropy$ is not initialized, a strong generator must be used to get a 128 bits seed. This seed must be stored in a safe place Store this seed in a safe place (in our case, the encrypted partition only visible by the _Secure OS_).
-
-
+1. If the PRNG seed  $Entropy$ is not initialized, a strong generator must be used to get a 128 bits seed. 
+2. Store this seed in a safe place (in our case, the encrypted partition only visible by the _Secure OS_).
 
 ### Secret generation
 
@@ -200,7 +199,7 @@ Here is how to generate $s_j, 0 \le i < n$ allowing to reconstruct $S$ from $k$ 
 
 1. $S$ is interpreted as 32 $a_{0,j}, 0 \le j < 32$ in $\textrm{GF}(2^8)$. Initialize 32 polynomials $P_j, 0 \le j < 32$ of degree $k-1$ with these value.
 2. Using `sss_rand`, generate the $k-1$ remaining coefficients for each one of the 32 polynomial $P_j(x)=a_{k-1,j}x^{k-1}+\ldots+a_{1,j}x+a_{0,j}$ 
-3. Convert the share index to comute into an element $y$ in $GF(2^8)$. ($1$ for 1, $x$ for 2, $x+1$ for 3, $x^2$ for 4 et $x^2+1$ for 5). 
+3. Convert the share index to compute into an element $y$ in $GF(2^8)$. ($1$ for 1, $x$ for 2, $x+1$ for 3, $x^2$ for 4 and $x^2+1$ for 5). 
 4. Return $s_j=(j, P(y))$, where  $P(y)$ is the concatenation of the $P_j(y), 0\le j < 32$.
 
 During the first step, the $S$ interpretation into 32 elements in $\textrm{GF}(2^8)$ is performed by the `bitslice` function, who can be considered as a transposition of a 32x8 matrix of elements in $\textrm{GF}(2)$. The first bits of each secret byte correspond to the 32 first bits of the bitsliced value, and so on.

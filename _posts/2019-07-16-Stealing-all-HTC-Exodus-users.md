@@ -281,10 +281,11 @@ Let's write down the equations of the *shares* $(1, P(1)), (x, P(x)), (x+1, P(x+
 
 
 The first two *shares*  $P(1)$ and $P(x)$ are:
-$$\begin{eqnarray}
+
+\begin{eqnarray}
 P(1) &=& a_{0,2} + a_{0,1} + a_{0,0} || a_{1,2} + a_{1,1} + a_{1,0} || \ldots || a_{31,2} + a_{31,1} + a_{31,0} \\
 P(x) &=& a_{0,2}x^2 + a_{0,1}x + a_{0,0} || a_{1,2}x^2 + a_{1,1}x + a_{1,0} || \ldots || a_{31,2}x^2 + a_{31,1}x + a_{31,0}
-\end{eqnarray}$$
+\end{eqnarray}
 
 All these equations are linear. The values of $P(1)$ and $P(x)$ can be expressed as a linear combination of the $P_i$ coefficients.
 But since the polynomial coefficients of degree 0 are a linear combination of the coefficients of degree 2, we can express $P(1)$ et $P(x)$ as a linear combination of the polynomial coefficients of degree 1 and 2 only.

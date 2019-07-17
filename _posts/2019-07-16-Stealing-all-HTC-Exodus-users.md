@@ -1,14 +1,14 @@
 ---
 layout: post
-title: Funds are SSSAFU - Stealing the funds of all HTC Exodus users
-summary: A small flaw in a Shamir Secret Sharing allows an attacker to steal the funds of all HTC Exodus users remotely without any interaction with Exodus phone.
+title: Funds are SSSAFU - Stealing the funds of all HTC EXODUS 1 users
+summary: How a bad implementation of Shamir Secret Sharing allows to steal all the cryptocurrencies stored on a HTC EXODUS 1 phone.
 featured-img: htc-ssafu
 
 ---
 
-
-_TL;DR_: An attacker with a code execution on Android (anyone) could steal the seed of all HTC Exodus users who used the Social Ke Recovery feature.
-We strongly recommend HTC Exodus users to move their funds to another seed if they used the Social Key Recovery function before April 2019.
+_TL;DR_: HTC EXODUS 1 phones come with an integrated hardware wallet. This wallet allows to backup its [master seed](https://bitcoin.org/en/glossary/hd-wallet-seed) by splitting it and sending it to "trusted contacts".
+Three trusted contacts are normally required to reconstruct the whole seed. We show that any trusted contact, or an attacker who compromised the phone of a trusted contact, can recover the whole seed and steal all the funds
+of the EXODUS 1 owner. We strongly recommend HTC EXODUS 1 users to move their funds to another seed if they used the Social Key Recovery function before April 2019.
 
 
 # Intro
@@ -19,10 +19,10 @@ This ensures an attacker, even with root privileges, does not have access to the
 <p align="center">
 <img src = "/assets/htc-exodus/exodus1.jpg">
 <br/>
-Fig. 1: HTC Exodus device
+Fig. 1: HTC EXODUS 1 device
 </p>
 
-We were especially interested in this (hardware) wallet since it offers a nice feature: [Social Key Recovery](https://www.htcexodus.com/uk/support/exodus-one/faq/what-is-social-key-recovery-and-why-use-it.html). In this blogpost, we will focus on this EXODUS 1 specific feature.
+We were especially interested in this (hardware) wallet since it offers a nice feature: [Social Key Recovery](https://www.htcexodus.com/uk/support/exodus-one/faq/what-is-social-key-recovery-and-why-use-it.html). In this blog post, we will focus on this EXODUS 1 specific feature.
 
 It consists in an original mechanism allowing to enforce the backup of the seed. The seed is split into five shares and each share is sent to a trusted contact. Should the user lose their phone, they will be able to reconstruct the seed by asking three of its five trusted contacts to communicate their shares. The number of shares (5) and the threshold (3) are fixed.
 
@@ -34,10 +34,10 @@ We will start by providing more details on the implementation of the Social Key 
 ## Social Key Recovery
 
 The master seed backup is a common problem for Hardware Wallet users.
-From this seed only, every user secrets are generated. This seed must be backuped, to ensure that the loss of your wallet does not implies the loss of your secrets: they can be restored on a new wallet from the backed up seed.
+From this seed only, every user secrets are generated. This seed must be backed up, to ensure that the loss of your wallet does not imply the loss of your secrets: they can be restored on a new wallet from the backed up seed.
 
 **How can you backup a seed?** 
-Most of Hardware Wallets propose a paper recovery sheet (Fig. 3), on which the user has to write down its BIP39 mnemonics (the mnemonics are a way to represent your seed into human readable words).
+Most Hardware Wallets propose a paper recovery sheet (Fig. 3), on which the user has to write down its BIP39 mnemonics (the mnemonics are a way to represent your seed into human readable words).
 But keeping this paper sheet safe is not an easy task, and some dedicated devices have been designed for this purpose (Fig. 2). For instance, a cryptosteel might be used, to prevent your mnemonic seed from deterioration.
 
 
@@ -48,7 +48,7 @@ Fig. 2: Cryptosteel - device to backup a seed
 </p>
 
 An alternative solution could be to own a backup Hardware Wallet, initialized with the same seed.
-There is not however a perfect solution, that would address all the problems.
+However, there is no perfect solution that would address all the problems.
 
 <p align="center">
 <img src = "/assets/htc-exodus/ledger-recovery-sheet.png">
@@ -64,7 +64,7 @@ Fig. 3: Ledger Recovery Sheet
 Fig. 4: The recovery sheet storage in practice
 </p>
 
-HTC EXODUS 1 comes with its own backup mechanism: Social Key Recovery. The user’s seed is split into **shares** which are sent to trusted contacts. The knowledge of 1 or 2 **shares** does not bring any information about the seed. The sole knowledge of 3 **shares** allow to reconstruct the complete seed. Within the scheme the master seed is never fully backed-up in a single location.
+HTC EXODUS 1 comes with its own backup mechanism: Social Key Recovery. The user’s seed is split into **shares** which are sent to trusted contacts. The knowledge of 1 or 2 **shares** does not bring any information about the seed. The sole knowledge of 3 **shares** allows to reconstruct the complete seed. Within the scheme the master seed is never fully backed up in a single location.
 
 HTC Hardware Wallet takes the form of an Android application named Zion, along with a trustlet (a secured application which is executed within the smartphone _secure OS_) which stores the seed and performs sensitive operations (Fig. 5). The secret sharing is also computed within the trustlet: in the following, the studied mechanism is implemented in the _secure OS_.
 
@@ -78,7 +78,7 @@ Fig. 5: Zion - Architecture overview
 
 Social Key Recovery is based on Shamir's Secret Sharing (SSS). This elegant [scheme](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing) allows to splitting a secret into $n$ shares, and to define a threshold $k$ as a minimal number of necessary shares to reconstruct the initial secret. An attacker able to retrieve $k-1$ shares obtains no information about the secret.
 
-**For understanding, the security flaw, let’s introduce briefly the SSS principles .**
+**Let’s briefly introduce the SSS principles in order to understand the security flaw.**
 
 The main mathematical concept used behind SSS is the following:
 
@@ -89,10 +89,10 @@ The main mathematical concept used behind SSS is the following:
 
 But:
 
-- $1$ point could belong to a large amount of polynomials of degree $1$,
-- $2$ points could belong to a large amount of polynomials of degree $2$,
+- $1$ point could belong to a large number of polynomials of degree $1$,
+- $2$ points could belong to a large number of polynomials of degree $2$,
 - ...
-- $k-1$ points could belong to a large amount of polynomials of degree $k-1$,
+- $k-1$ points could belong to a large number of polynomials of degree $k-1$,
 
 When sharing a secret $S$ using SSS, reconstructible with $k$ shares among $n$, the knowledge of $k$ shares is sufficient to reconstruct $S$, but the knowledge of $k-1$ shares brings no information about $S$
 
@@ -115,14 +115,14 @@ This problem can be solved by:
 - or only keeping the PRNG state before the splitting.
 
 
-The SSS implementation used by HTC is inspired from an open source project, and is available [here](https://github.com/dsprenkels/sss/).
-This open source implementation generates the shares all at once. One cannot request for a single share. In order to allow trusted contact to be added whenever, HTC modified the implementation, to the expense of security.
+The SSS implementation used by HTC is inspired by an open source project, and is available [here](https://github.com/dsprenkels/sss/).
+This open source implementation generates the shares all at once. One cannot request for a single share. In order to allow trusted contact to be added at will, HTC modified the implementation, at the expense of security.
 
 HTC chose to keep the PRNG seed. But the implementation also uses a DRBG: This ensures the output is predictable and the generated coefficients will always be the same. The seed used by DRBG (ie the PRNG state) is stored inside an encrypted partition, only available for the _secure OS_.
 
 ## Random Number Generator:
 
-The RNG from the original implementation (which was non deterministic) has been replaced by the following function:
+The RNG from the original implementation (which was non-deterministic) has been replaced by the following function:
 
 
 ```c
@@ -176,7 +176,7 @@ However the lack of robustness of the PRNG won't be useful for our attacks: what
 
 ## HTC Social Key Recovery Shares computation
 
-The shared secret is the seed of the wallet, used to derive all the keys for every cryptocurrency. But the implementation add an encryption layer to protect the secret. The cipher chosen is an authenticated stream cipher based on Salsa20 and Poly1305 (same as [TweetNaCl](https://tweetnacl.cr.yp.to/))
+The shared secret is the seed of the wallet, used to derive all the keys for every cryptocurrency. But the implementation adds an encryption layer to protect the secret. The cipher chosen is an authenticated stream cipher based on Salsa20 and Poly1305 (same as [TweetNaCl](https://tweetnacl.cr.yp.to/))
 
 
 ### Initialization
@@ -202,9 +202,13 @@ Here is how to generate $s_j, 0 \le i < n$ allowing to reconstruct $S$ from $k$ 
 3. Convert the share index to compute into an element $y$ in $GF(2^8)$. ($1$ for 1, $x$ for 2, $x+1$ for 3, $x^2$ for 4 and $x^2+1$ for 5). 
 4. Return $s_j=(j, P(y))$, where  $P(y)$ is the concatenation of the $P_j(y), 0\le j < 32$.
 
-During the first step, the $S$ interpretation into 32 elements in $\textrm{GF}(2^8)$ is performed by the `bitslice` function, who can be considered as a transposition of a 32x8 matrix of elements in $\textrm{GF}(2)$. The first bits of each secret byte correspond to the 32 first bits of the bitsliced value, and so on.
+During the first step, the $S$ interpretation into 32 elements in $\textrm{GF}(2^8)$ is performed by the `bitslice` function (Fig. 6), which can be considered as a transposition of a 32x8 matrix of elements in $\textrm{GF}(2)$. The first bits of each secret byte correspond to the first 32 bits of the bitsliced value, and so on.
 
-!!!TODO schéma
+<p align="center">
+<img src="/assets/htc-exodus/bitslice.png">
+<br/>
+Fig. 6: The bitslice function
+</p>
 
 ## Breaking the governance threshold
 
@@ -267,32 +271,31 @@ sss_create_keyshares(sss_Keyshare *out,
 ...
 ```
 
-The `key` variable is filled by `sss_rand`, just like `poly`. `key` is then used to initialize all the 32 $a_{j,0}$: this is done during the `bitslice` call, which fill `poly0` for this purpose. The `poly` buffers is used to store the polynomial coefficients of degree $1$ and $2$.
+The `key` variable is filled by `sss_rand`, just like `poly`. `key` is then used to initialize all the 32 $a_{j,0}$: this is done during the `bitslice` call, which fills `poly0` for this purpose. The `poly` buffers is used to store the polynomial coefficients of degree $1$ and $2$.
 
 But as mentioned before, two successive calls of `sss_rand` will output identical values. Hence `key` and the first 32 bytes of `poly` are equal.
 Since `poly0` is a permutation of `key`, we then get that the set of the polynomial coefficients of degree 1 is in reality a permutation of the polynomial coefficients of degree 0.
 
-Does the knowledge of ony two share allows to reconstruct the secret?
+Does the knowledge of only two shares allow to reconstruct the secret?
 Let's write down the equations of the *shares* $(1, P(1)), (x, P(x)), (x+1, P(x+1)), (x^2, P(x^2)), (x^2+1, P(x^2+1))$ to address this question.
 
 
-The first two *shares*  $P(1)$ et $P(x)$ are :
-$$
-\begin{eqnarray}
+The first two *shares*  $P(1)$ and $P(x)$ are:
+$$\begin{eqnarray}
 P(1) &=& a_{0,2} + a_{0,1} + a_{0,0} || a_{1,2} + a_{1,1} + a_{1,0} || \ldots || a_{31,2} + a_{31,1} + a_{31,0} \\
 P(x) &=& a_{0,2}x^2 + a_{0,1}x + a_{0,0} || a_{1,2}x^2 + a_{1,1}x + a_{1,0} || \ldots || a_{31,2}x^2 + a_{31,1}x + a_{31,0}
-\end{eqnarray}
-$$
+\end{eqnarray}$$
+
 All these equations are linear. The values of $P(1)$ and $P(x)$ can be expressed as a linear combination of the $P_i$ coefficients.
 But since the polynomial coefficients of degree 0 are a linear combination of the coefficients of degree 2, we can express $P(1)$ et $P(x)$ as a linear combination of the polynomial coefficients of degree 1 and 2 only.
 
-The linear application we use can be represented as a 512x512 matrix of elements in $\textrm{GF}(2)$. Its rank is 506 and whatever $P(1)$ and $P(x)$ are, the system will always have 64 solutions. The solving is immediate.
+The linear application we use can be represented as a 512x512 matrix of elements in $\textrm{GF}(2)$. Its rank is 506 and whatever $P(1)$ and $P(x)$ are, the system will always have 64 solutions. Solving is immediate.
 
 It can be shown that, no matter which shares are retrieved, the system will always have between 2 and 256 solutions.
 In order to test the returned solutions, we use a previously mentioned property of the used DRBG: the byte representation of the polynomial coefficients of degree 1 must be equal to the SHA-256 of the coefficients of degree 2.
 
 
-This attack has been implemented using Sage. Given two *shares*, solving the system and testing the solutions takes less than a second. The secret is systematically retrieved from two shares.
+This attack has been implemented using Sage. Given two *shares*, solving the system and testing all solutions takes less than a second. The secret is systematically retrieved from two shares.
 
 ```shell
 sage: load("rebuild_secret.py")
@@ -300,10 +303,10 @@ sage: load("rebuild_secret.py")
 Recovered 1 secret in 0.111693s
 ```
 
-We have just shown how to lower to $2$ the number of necessary shares to reconstruct a secret (instead of $3$). Beyond the fact that the 3-out-of-5 threshold is no longer valid, we still consider the security threat as non negligible. Ideally, a user should split their seed between $5$ trusted contacts who do not know each other. In practice, it seems more realistic to use $5$ trusted contacts even if some of them know each other.
+We have just shown how to lower to $2$ the number of necessary shares to reconstruct a secret (instead of $3$). Beyond the fact that the 3-out-of-5 threshold is no longer valid, we still consider the security threat as non-negligible. Ideally, a user should split their seed between $5$ trusted contacts who do not know each other. In practice, it seems more realistic to use $5$ trusted contacts even if some of them know each other.
 
 
-With this attack, a malicious contact just has to convince (or compromise) only one other trusted contact to fully recover the seed, and access the funds.
+With this attack, a malicious contact just has to convince (or compromise) only one other trusted contact to fully recover the seed, and to access the funds.
 
 
 ## Breaking the mechanism
@@ -316,7 +319,7 @@ The firmware impacted by the previous attack are the following (European IDs are
 
 On 2019-02-19, a third firmware has been issued.
 
-By studying this one, we were very surprised to notice that `sss_update_secure_random_buffer`, the PRNG initialization function, is never called. The PRNG always returns the same value: its entropy buffer, initialized with a fixed value (probably to pass test vectors validation). We believe that the trustlet has been compiled with a test option that should never have been used in production. As a consequence, the key used to encrypt the seed is fixed. Since this key is sent to each contact, any of them can decrypt the seed and access the funds.
+By studying this one, we were very surprised to notice that `sss_update_secure_random_buffer`, the PRNG initialization function, is never called. The PRNG always returns the same value: its entropy buffer, initialized with a fixed value (probably to pass test vectors validation). We believe that the trustlet has been compiled with a test option that should never have been used in production. As a consequence, the key used to encrypt the seed is fixed. Since this key is sent to each contact, any of them can decrypt the seed and access to the funds.
 
 
 ```python
@@ -334,23 +337,21 @@ print(mnemonic.Mnemonic('english').to_mnemonic(seed))
 
 **On 2019.02.15**, we disclosed to HTC Exodus all the above-mentioned flaws.
 
-**Two months later**, other vulnerabilities (memory corruption inside the touchscreen driver, inside the trusted UI and in the ETH/BTC transaction parsing)  were also disclosed. They all have already been found and fixed by HTC Security Team.HTC.
+**Two months later**, other vulnerabilities (memory corruption inside the touchscreen driver, inside the trusted UI and in the ETH/BTC transaction parsing)  were also disclosed. They all had already been found and fixed by HTC Security Team.
 
-**On 2019-03-05**, HTC Exodus team was in Paris and took this opportunity to visit us. They even got the chance to enter the Donjon
+**On 2019-03-05**, HTC Exodus team was in Paris and took this opportunity to visit us. They even got the chance to enter the Donjon.
 
-**On 2019.03.25**, HTC issued a new firmware (1.62.2401.7) addressing all these issues. The SSS patch consists in using a robust PRNG and save every generated share inside the secure storage. These shares are used whenever a new trusted contact is added,
+**On 2019.03.25**, HTC issued a new firmware (1.62.2401.7) addressing all these issues. The SSS patch consists in using a robust PRNG and save every generated share inside the secure storage. These shares are used whenever a new trusted contact is added.
 
 **On 2019.04.05**, HTC Exodus started a bounty program for Zion Hardware Wallet.
 
-After these discussions HTC indicated us, this vulnerabilities disclosure triggered the creation of their own bounty program. Nevertheless, we didn’t receive any bounty for this work. But we got Exodus shirts and stickers when they visited us. :) 
+After these discussions HTC indicated us, this vulnerabilities disclosure triggered the creation of their own bounty program. As we reported the bugs before the creation of the bounty program, we did not receive any bounty, but we got Exodus shirts and stickers when they visited us. :) Thanks a lot!
 
 ## Takeaway
 
-We studied HTC Exodus Wallet functionality. The main focus of our study was the Social Recovery Mechanism. This feature is very interesting if securely implemented. Our analysis showed that two independent security flaws on this implementation were very critical. 
-In a scenario where an attacker is able to execute code (Android vulnerability, regular Android app) on the Android phone of any Zion trusted contact, he could steal the funds of the corresponding Exodus user.
+We studied the hardware wallet of the HTC Exodus 1 phone, and discovered two critical vulnerabilities on the Social Key Recovery mechanism.
+In a scenario where an attacker is able to execute code (Android vulnerability, regular Android app) on the Android phone of any Zion trusted contact, he could steal the funds of the corresponding EXODUS 1 owner.
 Alternatively, trusted contacts have a direct access to the seed.
 These vulnerabilities have been correctly patched. 
 
 **Nevertheless, we strongly encourage all EXODUS 1 users who have used the Social Key Recovery to change their seed (and migrate their funds). Indeed, their seed could have been compromised earlier or could still be compromised via a trusted contact who wouldn’t update Zion.**
-
-

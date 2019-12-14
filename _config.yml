@@ -16,6 +16,7 @@ social:
 # THEME SETTINGS
 navigation: # Navigation links
   - {name: 'Tech', link: '/'}
+  - {name: 'Vault', link: '/vault/'}
   - {name: 'Security', link: 'https://donjon.ledger.com/'}
   - {name: 'About', link: '/about'}
 

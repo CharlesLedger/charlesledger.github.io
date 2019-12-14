@@ -30,15 +30,11 @@ layout: compress
       <section class="blog">
         <div class="container">
           <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
-
-
             {% for category in site.categories %}
-              {% if category[0] == "Vault" %}
-                {% for post in category[1] %}
-                   {% include card.html %}
-              {% endif %}
+              {% for post in category[1] %}
+                {% include card.html %}
+              {% endfor %}
             {% endfor %}
-
 
             <!-- {% include pagination.html %} -->
           </div>

@@ -38,3 +38,7 @@ img::selection {
 figure {
   margin: 0;
 }
+
+blockquote > p {
+  font-style: italic;
+}

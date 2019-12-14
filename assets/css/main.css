@@ -433,7 +433,7 @@ body {
   font-family: "MuseoSans_300", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
-  color: #514134;
+  color: #1d2028;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; }
 
@@ -456,15 +456,15 @@ h6 {
   margin-bottom: .5rem; }
 
 a {
-  color: #ef7f24;
+  color: #0097a7;
   text-decoration: none;
   transition: all .2s linear;
-  border-bottom: 1px dashed #ef7f24; }
+  border-bottom: 1px dashed #0097a7; }
   a:active, a:focus {
     outline: 0; }
   a:hover, a:focus {
-    color: #f1a668;
-    border-bottom: 1px solid #f1a668; }
+    color: #25d0e2;
+    border-bottom: 1px solid #25d0e2; }
 
 hr {
   height: 1px;
@@ -550,7 +550,7 @@ pre {
 
 .header {
   background-color: #fff;
-  color: #514134;
+  color: #1d2028;
   position: absolute;
   z-index: 4;
   width: 100%;
@@ -606,7 +606,7 @@ pre {
   background: #fff; }
 
 .header__link {
-  color: #514134;
+  color: #1d2028;
   padding: .938rem 0;
   border-top: 1px solid #ededed; }
 
@@ -623,7 +623,7 @@ pre {
     display: block;
     position: relative;
     margin-top: 4px;
-    background-color: #514134;
+    background-color: #1d2028;
     width: 100%;
     height: 2px;
     border-radius: 1px;
@@ -685,15 +685,15 @@ pre {
       height: 3px;
       width: 100%;
       transform: scaleX(0);
-      background: #ef7f24;
+      background: #0097a7;
       transition: color 0.2s ease-in-out, transform .2s ease-in-out; }
     .header__link:hover {
-      color: #a14f0c; }
+      color: #003b41; }
     .header__link:hover::after,
     .header__link :active::after,
     .header__link :focus::after {
       transform: scaleX(1);
-      color: #a14f0c;
+      color: #003b41;
       transition: transform .2s ease-in-out; } }
 footer {
   padding: 2.8125rem 0;
@@ -705,7 +705,7 @@ footer {
     color: rgba(33, 33, 33, 0.6);
     border-bottom: 0; }
     footer a:hover, footer a:focus {
-      color: #ef7f24;
+      color: #0097a7;
       border-bottom: 0; }
 
 .social {
@@ -863,8 +863,8 @@ button:disabled {
   transition: all 0.2s ease; }
   .label:focus, .label:hover {
     color: #fff;
-    background-color: #ef7f24;
-    border: 2px solid #ef7f24; }
+    background-color: #0097a7;
+    border: 2px solid #0097a7; }
 
 .pagination {
   display: flex;
@@ -883,7 +883,7 @@ textarea {
   background: transparent; }
   input:focus,
   textarea:focus {
-    border-color: #ef7f24;
+    border-color: #0097a7;
     transition: border-color .25s; }
 
 .form__input {
@@ -898,7 +898,7 @@ textarea {
     left: 0;
     width: 0;
     height: 2px;
-    background: #ef7f24;
+    background: #0097a7;
     z-index: 5;
     transition: width 0.45s cubic-bezier(0.694, 0.048, 0.335, 1);
     transition-delay: .1s; }
@@ -1272,7 +1272,7 @@ table {
   min-height: 8.75rem;
   width: 100%;
   position: relative;
-  background-color: #373431; }
+  background-color: #142533; }
   @media only screen and (min-width: 62em) {
     .hero--small {
       height: 12.5em; } }
@@ -1284,7 +1284,7 @@ table {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(51, 41, 34, 0.8); }
+    background: #142533aa; }
 
 .hero__wrap {
   position: absolute;
@@ -1396,7 +1396,7 @@ table {
     .controls__item a svg {
       transition: all .2s linear; }
     .controls__item a:hover {
-      color: #ef7f24;
+      color: #0097a7;
       border-bottom: 0; }
       .controls__item a:hover svg {
-        fill: #ef7f24; }
+        fill: #0097a7; }

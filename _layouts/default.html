@@ -33,9 +33,10 @@ layout: compress
 
 
             {% for category in site.categories %}
-              {% if category[0] == "Vault" }}
+              {% if category[0] == "Vault" %}
                 {% for post in category[1] %}
-                {% include card.html %}
+                   {% include card.html %}
+              {% endif %}
             {% endfor %}
 
 

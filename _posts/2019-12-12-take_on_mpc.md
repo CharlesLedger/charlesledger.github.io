@@ -90,15 +90,15 @@ The implementation of MPC in secure hardware remains a missing piece of the puzz
 MPC will be a great addition to the arsenal of security solutions made available with secure hardware, and Ledger will investigate integrating MPC to our existing portfolio of security solutions to create a more robust end-to-end security solution to protect critical digital assets.
 
 # References
-[1]:https://www.inpher.io/technology/what-is-secure-multiparty-computation
-[2]:https://www.binance.vision/security/threshold-signatures-explained
-[3]:https://csrc.nist.gov/Projects/Threshold-Cryptography
-[4]:https://eprint.iacr.org/2019/074.pdf
-[5]:https://blog.trailofbits.com/2019/09/11/crypto-2019-takeaways/
-[6]:https://electriccoin.co/blog/zcash-counterfeiting-vulnerability-successfully-remediated/#counterfeiting-vulnerability-details
-[7]:https://eprint.iacr.org/2019/1336
-[8]:https://eprint.iacr.org/2016/013
-[9]:https://www.wired.com/story/ios-attack-watering-hole-project-zero/
+* [1]:https://www.inpher.io/technology/what-is-secure-multiparty-computation
+* [2]:https://www.binance.vision/security/threshold-signatures-explained
+* [3]:https://csrc.nist.gov/Projects/Threshold-Cryptography
+* [4]:https://eprint.iacr.org/2019/074.pdf
+* [5]:https://blog.trailofbits.com/2019/09/11/crypto-2019-takeaways/
+* [6]:https://electriccoin.co/blog/zcash-counterfeiting-vulnerability-successfully-remediated/#counterfeiting-vulnerability-details
+* [7]:https://eprint.iacr.org/2019/1336
+* [8]:https://eprint.iacr.org/2016/013
+* [9]:https://www.wired.com/story/ios-attack-watering-hole-project-zero/
 
 
 

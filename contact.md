@@ -1,11 +1,9 @@
 ---
-layout: page
-title: Contact
-permalink: /contact/
+#
+# You don't need to edit this file, it's empty on purpose.
+# Edit sleeks's default layout instead if you wanna make some changes
+# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+#
+layout: vault
+title: Ledger Vault
 ---
-
-## Contact us
-If you're interested by our work, or you would be willing to get more information, conducting common security research and more, don't hesitate to contact us. Our Twitter DM are open, or mail us at **donjon -at- ledger.fr**
-
-## Bounty program
-If you believe you have found a security vulnerability on Ledger's products, please visit the [dedicated page](https://www.ledger.com/bounty-program). All the instructions are written there.

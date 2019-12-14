@@ -20,6 +20,7 @@ Unlike traditional financial assets, critical digital assets such as cryptocurre
 <img src="/assets/mpc/key_mgmt_lifecycle.png" >
 governance rule enforcement and transaction verification.
 </center>
+_<center>governance rule enforcement and transaction verification</center>_
 <br/>
 
 
@@ -39,8 +40,8 @@ Once the wallet is created, MPC can be applied for transaction signature. One ca
 
 <center>
 <img src="/assets/mpc/quorum.png" >
-Simplified example of a 3 approvers MPC quorum using TSS
 </center>
+_<center> Simplified example of a 3 approvers MPC quorum using TSS </center>_
 <br/>
 
 
@@ -89,7 +90,7 @@ The implementation of MPC in secure hardware remains a missing piece of the puzz
 
 MPC will be a great addition to the arsenal of security solutions made available with secure hardware, and Ledger will investigate integrating MPC to our existing portfolio of security solutions to create a more robust end-to-end security solution to protect critical digital assets.
 
-# References
+#References
 * 1:https://www.inpher.io/technology/what-is-secure-multiparty-computation
 * 2:https://www.binance.vision/security/threshold-signatures-explained
 * 3:https://csrc.nist.gov/Projects/Threshold-Cryptography

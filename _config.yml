@@ -4,7 +4,7 @@ author: CharlesLedger
 description: > # Meta description of Homepage
    The latest news about technology and engineering at Ledger.
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "charlesledger.github.io"
+url: "https://charlesledger.github.io"
 
 # SEO PLUGIN
 social:

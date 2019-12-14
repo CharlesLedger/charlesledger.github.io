@@ -18,7 +18,6 @@ navigation: # Navigation links
   - {name: 'Engineering', link: '/'}
   - {name: 'Financial Services', link: '/vault/'}
   - {name: 'About', link: '/about'}
-  - {name: 'Our Security Blog', link: 'https://donjon.ledger.com/'}
 
 tagline: >
    Technology and Engineering at Ledger

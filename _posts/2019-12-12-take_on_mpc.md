@@ -91,6 +91,7 @@ The implementation of MPC in secure hardware remains a missing piece of the puzz
 MPC will be a great addition to the arsenal of security solutions made available with secure hardware, and Ledger will investigate integrating MPC to our existing portfolio of security solutions to create a more robust end-to-end security solution to protect critical digital assets.
 
 #References
+<a name="References"></a>
 * 1:https://www.inpher.io/technology/what-is-secure-multiparty-computation
 * 2:https://www.binance.vision/security/threshold-signatures-explained
 * 3:https://csrc.nist.gov/Projects/Threshold-Cryptography

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Is MPC truly ready for digital assets cusody 
-author: yhql
+author: charles
+author_github: charles
 summary: Trying to bring a modern language and memory safety into our applications
 featured-img: mpc 
 categories: Vault
@@ -103,6 +104,8 @@ MPC will be a great addition to the arsenal of security solutions made available
 * 9:https://www.wired.com/story/ios-attack-watering-hole-project-zero/
 
 
-
+<span class="author-name">
+  {{ site.data.authors[page.author_github].name }}
+</span>
 
 

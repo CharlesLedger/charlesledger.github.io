@@ -108,4 +108,9 @@ MPC will be a great addition to the arsenal of security solutions made available
   {{ site.data.authors[page.author_github].name }}
 </span>
 
-
+<a href="www.twitter.com/{{site.data.authors[page.author_github].twitter}}">
+  <i class="ico-twitter"></i>
+</a>
+<a href="www.github.com/{{site.data.authors[page.author_github].github}}">
+  <i class="ico-github"></i>
+</a>

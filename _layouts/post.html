@@ -62,6 +62,12 @@ layout: compress
         {{ content }}
 
       </article>
+      ## if there is an author bio
+     {% if author.bio %}
+         {% include author_bio.html %}
+     {% endif %}
+
+
       <div class="post-content controls__inner">
         <div class="controls__item prev">
           {% if page.previous.url %}

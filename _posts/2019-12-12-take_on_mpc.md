@@ -2,7 +2,6 @@
 layout: post
 title: Is MPC truly ready for digital assets cusody 
 author: charles
-author_github: charles
 summary: Trying to bring a modern language and memory safety into our applications
 featured-img: mpc 
 image: assets/images/author-bio.png

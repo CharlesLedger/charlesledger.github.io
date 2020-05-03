@@ -98,6 +98,8 @@ An attacker with a physical access to a device (eg. device stolen) might get a f
 
 To prevent this, a PIN security mechanism is implemented. During the boot of Ledger devices, the end user must prove that he is the owner of its device thanks to its PIN (Personal Indentification Number). This security function is the first interaction between the endnuser and the device and is critical because it gives access to all services. For instance, all cryptocurrency apps are available meaning cryptocurrency transfer is available. Note that all other Apps (for instance Password Manager, FIDO) are also available as soon as the PIN verification is successfully performed.
 
+<!TODO> INSERT PIN PIX
+
 The length of the PIN, defined by the end user during the on-boarding stage, must be in the following range: minimum 4 digits, maximum 8 digits. The PIN Try Counter (PTC), whose default value is set to 3, counteracts brute-force attacks revealing the value of the PIN. It shall be noticed that a PIN is not ultimate protection. It leaves 3 tries to find the user's PIN value. With a 4-digit PIN, if PIN values were equally ditributed, it would leave 0.03% of chance to find the user' PIN value. Unfortunately, 10% of PIN values are '1234'. 
 
 As soon as the PTC exceeds its limit, the device wipes the following sensitive assets:

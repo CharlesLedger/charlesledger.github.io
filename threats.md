@@ -146,12 +146,16 @@ Firmware upgrade are signed and sent through a secure channel from the HSM to th
 > Several means could allow to break confidentiality or integrity at the OS level. Software vulnerabilities in the isolation implementation, cryptographic vulnerabilities in the secure channel implementation, physical attacks to dump the OS are possible threats against these security properties.
 
 ## OS - Transport Security
-Without communication the 
-
 USB is the only way to communicate with the Nano S while the Ledger Nano X also features Bluetooth Low Energy (BLE) connectivity.
 
-As these protocols expose a broad attack surface, there is a dedicated and untrusted piece of hardware, the MCU, whose main role is to implement these communication protocols. Once the packets are decoded by the MCU, their content is forwarded to the Secure Element which has little to no knowledge about the original communication protocol.
+As these protocols expose a broad attack surface, there is a dedicated and untrusted piece of hardware, the MCU, whose main role is to implement these communication protocols. Once the packets are decoded by the MCU, their content is forwarded to the Secure Element which has little to no knowledge about the original communication protocol. Specifically, under Ledger devices threat model, USB and BLE transports are considered as the outside world (cf. [Security model of BLE for Nano X](https://www.ledger.com/ledger-nano-x-bluetooth-security-model-of-a-wireless-hardware-wallet/)). No security assumption is done on the data coming from them.
 
+<U>Associated Threats</U>
+> The Operating System of the user can be malwared and send ill-formed USB/BLE packet. This could lead to several kind of attacks such as arbitrary code execution.
+
+
+## App - User Consent
+<!TODO> Explain the concept of outside the devices = untrusted. Monero vuln / blind sig
 
 ## App - Isolation
 

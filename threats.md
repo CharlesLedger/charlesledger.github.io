@@ -6,28 +6,27 @@ permalink: /threat-model/
 
 # Threat Model
 
+This page is intended to describe the threat model of Ledger Nano S and Nano X devices. It first lists the main security objectives the devices intend to fullfil. Then it describes the security mechanisms implemented in order to actually reach these objectives. The associated threats to these security mechanisms are also mentionned.
 
-----
 ## Security Objectives
-- Prevent attackers from extracting user seeds or private keys
-- Bypass PIN protection / user's consent 
-- Prevent attackers from misleading the end user (eg. by displaying arbitrary data on the device screen)
-- Prevent attackers from manufacturing fake devices
-- Protect the confidentiality of the firmware and Secure Element API / intellectual property (under NDA)
-- Protect Ledger secret keys (attestation)
-- Protect user's privacy - Prevent users to be uniquely identified
-
-Software and hardware attacks are considered.
+The main security objective of the Ledger Nano devices is to provide a **physical and logical** security to users' funds. This objective can be divided in the following sub-objectives:
+1. Guarantee the **confidentiality of user seeds and private keys**
+2. Ensure the use of digital assets is performed **under user consent**. In particular, the device shall prevent attackers from misleading the end user (eg. by displaying arbitrary data on the device screen)
+3. Provide a mechanism allowing the user to verify he has a **genuine** device.
+4. Protect users' **privacy** - In particular, the device shall prevent users to be uniquely identified
+5. Protect the **confidentiality of the firmware and Secure Element API** / intellectual property (under NDA)
 
 
 ## Definitions
+
+For the sake of clarity, some basic definition are recalled. In particular, the roles, the key usage and the components of the devices are recalled.
 
 ### Roles:
 
 - **End user**: The end user is the happy owner of a Ledger Nano S/X. He has physical access to the device
 - **Firmware developer**: Only some Ledger employees can develop the Firmware of the Ledger Nano devices. They are in charge of developping the OS and its crypto-lib
 - **App Developer**: The Ledger Nano S OS is open. Anyone can develop an app running on top of it. Developping on Ledger Nano X requires Ledger authorization.
-- **HSM**: Hardware Security Modules are basically remote computers able to check the device genuineness and perform privileged operations (install/remove apps, update firmware) on the devices
+- **HSM**: Hardware Security Modules are basically remote computers able to check the device genuineness and perform privileged operations (install/remove apps, update firmware) on the devices.
 
 ### Key usage scenarios:
 
@@ -35,15 +34,18 @@ Software and hardware attacks are considered.
 - User makes crypto-currency transaction thanks to the Ledger Live. Critical pieces of information are displayed and confirmed on the device.
 - User updates its device thanks to the Ledger Live
 
-### Technologies:
+### High Level architecture:
 The Ledger Nano S and Nano X are composed of:
 
 - A Secure Element (ST31 for Nano S, ST33 for Nano X)
 - A general purpose MCU (STM32Fxxx for Nano S, STM32WB55 for Nano S)
 - External peripherals: screen, buttons
 
+----
 
 # Security Mechanisms 
+
+Several security mechanisms are implemented at different levels. In the following we'll distinguish device security mechanisms, OS security mechanisms and app security mechanisms.
 
 ## Devices
 

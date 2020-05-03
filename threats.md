@@ -60,22 +60,22 @@ To prove the genuineness of Ledger devices, the following steps take place durin
 
 After manufacturing, this attestation allows the user (through Ledger Live) to verify if the device is genuine. The HSM sends a challenge which must be signed by the device and sent back along the attestation. This allows the HSM to verify the attestation and the challenge signature and eventually tell whether the device is genuine or not. More details can be found in [this blogpost]([https://www.ledger.com/a-closer-look-into-ledger-security-the-root-of-trust/).
 
-<U>Associated Threat</U>
+<U>Associated Threats</U>
 > An attack allowing to extract a device is a major threat to device genuineness security mechanism. Generally speaking, any attack allowing a non genuine device to pass the genuine check is a valid attack.
 
 ### End User Physical Verification
 
 We have designed the Ledger Nano S to be easily openable, so users can [check the integrity](https://support.ledger.com/hc/en-us/articles/360019352834-Check-hardware-integrity) of their device by themselves as detailed here. Being aware that this solution might not be suitable for all users, the architecture of the Ledger Nano X is different: the buttons and the screen are directly connected to the Secure Element to prevent this kind of chip-in-the-middle attack.
 
-<U>Associated Threat</U>
+<U>Associated Threats</U>
 > An attack allowing to extract a device is a major threat to device genuineness security mechanism. Generally speaking, any attack allowing a non genuine device to pass the genuine check is a valid attack.
 
 
 ## Device: Secure Display and inputs
 
-The wallet should ensure secure display and secure inputs, for verifying and granting transactions. It allows to ensure the "What you see is what you sign" property. It's at the utmost importance for the user to have a trusted display for verifying his transactions, getting his receiving address... It prevents an attacker from tricking the user in various ways to leverage his rights. It's equally important to have trusted inputs. It avoids an attacker to bypass user consent for approving a transaction for instance. This security mechanism is implemented through the genuineness property, the firmware integrity firmware mechanism and the device architecture itself.
+The wallet should ensure secure display and secure inputs, for verifying and granting transactions. It allows to ensure the "What you see is what you sign" property. It's at the utmost importance for the user to have a trusted display for verifying his transactions, getting his receiving address. It prevents an attacker from tricking the user in various ways to leverage his rights. It's equally important to have trusted inputs. It avoids an attacker to bypass user consent for approving a transaction for instance (cf. <!TODO> The Importance of Trusted Display) . This security mechanism is implemented through the genuineness property, the firmware integrity firmware mechanism and the device architecture itself.
 
-<U>Associated Threat</U>
+<U>Associated Threats</U>
 > An attack allowing to run a non legit firmware on the secure element, execute arbitrary code controlling the display or bypassing user's input, an hardware modification are some examples of threat against this property.
 
 
@@ -87,7 +87,7 @@ Hardware wallets can also be targeted by more sophisticated attacks such as faul
 
 Ledger devices use Secure Elements along with software especially developped to prevent these kind of attacks.
 
-<U>Associated Threat</U>
+<U>Associated Threats</U>
 > An attacker with a physical access to the device with a high potential (expertise, time, equipement), is the typical threats the Ledger devices shall counter. This comprises Laser, EM, Glitch Fault injection, Side Channel Attacks, Hardware reverse... Any physical attack allowing to extract seeds, PIN, firmware is a valid attack.
 
 
@@ -106,7 +106,7 @@ As soon as the PTC exceeds its limit, the device wipes the following sensitive a
 
 Thanks to this security action of wiping, the device cannot be used because because the current state is not operational anymore. An initialization (either normal mode or restore mode) is then required.
 
-<U>Associated Threat</U>
+<U>Associated Threats</U>
 > Any attack allowing to bypass the PIN verification or to guess/extract the correct value of the user's PIN is a valid attack.
 
 ## OS - Random Number Generation
@@ -118,7 +118,7 @@ Hardware wallets are built with Integrated Circuit (IC) and inside the circuit t
 
 On Ledger devices Random Number generation is used for seed generation, Ephemeral keys generation, and countermeasures.
 
-<U>Associated Threat</U>
+<U>Associated Threats</U>
 > Any mean allowing an attacker to reduce the entropy, predict seed/keys value without detection is a valid attack.
 
 ## OS - Confidentiality of Seed/Private keys
@@ -129,17 +129,19 @@ On Ledger devices, the seed is stored in the non-volatile memory of the Secure E
 
 Once the device is initialized, there is absolutely no way to retrieve the seed. Even apps installed on the device cannot read it (cf Isolation <!TODO> ).
 
-<U>Associated Threat</U>
+<U>Associated Threats</U>
 > Seed Extraction attacks are classical threat vectors already demonstrated by the security community ([Glitch attack](https://colinoflynn.com/2019/03/glitching-trezor-using-emfi-through-the-enclosure/), [SRAM seed extraction](https://saleemrashid.com/2017/08/17/extracting-trezor-secrets-sram/), [EMFI attack](https://www.offensivecon.org/speakers/2019/sergei-volokitin.html))
  
-## OS - Integrity
+## OS - Confidentiality & Integrity
 
+The confidentiality and integrity of the OS are also important mostly for IP reasons. Using a Secure Element, Ledger devices must protect the IP of the Secure Element vendor. The confidentiality and the integrity of the code running are ensured leveraging the hardware security mechanism provided by the secure element itself. Furthermore, even if it's possible to load 3rd party code at the app level, this code shall not be able to dump/modify the OS nor private data such as Ledger attestation. This kernel/app isolation is implemented using Memory Protection Unit (MPU) capabilities offered by the Secure element.
+Integrity checks are also implemented at boot time.
+Firmware upgrade are signed and sent through a secure channel from the HSM to the Secure element itself. The Secure Channel provides authentication (Attestation), confidentiality (AES) and integrity properties (MAC).
 
-## OS - Confidentiality
+<U>Associated Threats</U>
+> Several means could allow to break confidentiality or integrity at the OS level. Software vulnerabilities in the isolation implementation, cryptographic vulnerabilities in the secure channel implementation, physical attacks to dump the OS are possible threats against these security properties.
 
-
-# OS - Transport Security
-
+## OS - Transport Security
 Without communication the 
 
 USB is the only way to communicate with the Nano S while the Ledger Nano X also features Bluetooth Low Energy (BLE) connectivity.
@@ -147,7 +149,7 @@ USB is the only way to communicate with the Nano S while the Ledger Nano X also 
 As these protocols expose a broad attack surface, there is a dedicated and untrusted piece of hardware, the MCU, whose main role is to implement these communication protocols. Once the packets are decoded by the MCU, their content is forwarded to the Secure Element which has little to no knowledge about the original communication protocol.
 
 
-# App - Isolation
+## App - Isolation
 
 One of the main feature of Ledger devices is that anyone can load its own app on the Secure Element. Each app is isolated from each other thanks to BOLOS, the Operating System. That essentially means that:
 

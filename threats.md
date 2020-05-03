@@ -52,7 +52,7 @@ Several security mechanisms are implemented at different levels. In the followin
 The ability to prove genuineness of the device is one of the main security features, from both hardware and firmware points of view. The hardware wallet must have a secure mechanism for this, and this is at the utmost importance. An attacker could otherwise have replaced a genuine device by a fake and backdoored one (through supply chain or evil maid attack for instance). In this case, he would be able to access to the crypto assets afterwards. For the record, [non-genuine Trezor One devices](https://blog.trezor.io/psa-non-genuine-trezor-devices-979b64e359a7) were sold on the Internet in 2018.
 Anti-tampering seals (or holographic seals) can give a false sense of security: not only are they trivial to clone, but it is also easy to open and close a package without damaging the seal.
 
-### Ledger Genuine Check
+** Ledger Genuine Check **
 
 To prove the genuineness of Ledger devices, the following steps take place during the manufacturing (in secure environment):
 - Each Ledger device generates a unique pair of keys: a public key and a private key. The private key is kept secret to the device only and cannot be exported nor retrieved.
@@ -63,7 +63,7 @@ After manufacturing, this attestation allows the user (through Ledger Live) to v
 <U>Associated Threats</U>
 > An attack allowing to extract a device is a major threat to device genuineness security mechanism. Generally speaking, any attack allowing a non genuine device to pass the genuine check is a valid attack.
 
-### End User Physical Verification
+** End User Physical Verification **
 
 We have designed the Ledger Nano S to be easily openable, so users can [check the integrity](https://support.ledger.com/hc/en-us/articles/360019352834-Check-hardware-integrity) of their device by themselves as detailed here. Being aware that this solution might not be suitable for all users, the architecture of the Ledger Nano X is different: the buttons and the screen are directly connected to the Secure Element to prevent this kind of chip-in-the-middle attack.
 

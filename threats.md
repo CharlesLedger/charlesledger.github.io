@@ -41,6 +41,8 @@ The Ledger Nano S and Nano X are composed of:
 - A general purpose MCU (STM32Fxxx for Nano S, STM32WB55 for Nano S)
 - External peripherals: screen, buttons
 
+<!TODO> Insert the scheme
+
 ----
 
 # Security Mechanisms 

@@ -88,8 +88,8 @@ The overall mechanism is quite simple and described in the following steps.
 <img src="/blog_swap/7.jpg" style="width:500px;">
 </center>  
 <br/>
-<ol>
-<li>The swap operation is initiated by Ledger Live, which communicates with the swap provider API to get the exchange rates. “How much ETH for 0.005 BTC?”</li>
+
+1- The swap operation is initiated by Ledger Live, which communicates with the swap provider API to get the exchange rates. “How much ETH for 0.005 BTC?”
 
 <br/>
 <center>
@@ -98,7 +98,7 @@ The overall mechanism is quite simple and described in the following steps.
 <br/>
 
 
-<li>The swap provider answers with a swap offer: “0.14 ETH for your 0.005 BTC”. The user can then accept the offer and continue to confirm the swap.</li>
+2- The swap provider answers with a swap offer: “0.14 ETH for your 0.005 BTC”. The user can then accept the offer and continue to confirm the swap.
 
 <br/>
 <center>
@@ -107,16 +107,16 @@ The overall mechanism is quite simple and described in the following steps.
 <br/>
 
 
-<li>The Exchange app must now be opened on the device. This is where the secure part of the transaction happens: the Secure Element generates a transaction ID and sends it to the swap provider along with the necessary information for performing the swap request information: 
+3- The Exchange app must now be opened on the device. This is where the secure part of the transaction happens: the Secure Element generates a transaction ID and sends it to the swap provider along with the necessary information for performing the swap request information: 
 * `outgoing currency`, `outgoing amount`, `provider address`
 * `receiving currency`, `receiving address`
-This information is sent to Ledger Live which forwards it to the swap provider.</li>
+This information is sent to Ledger Live which forwards it to the swap provider.
 
-<li>The provider answers with a swap offer. It constructs a payload containing the final information for the swap: 
+4- The provider answers with a swap offer. It constructs a payload containing the final information for the swap: 
 * `Outgoing crypto`, `outgoing amount`, `provider address` (BTC)
 * `receiving crypto`, `receiving amount`, `user address` (ETH) 
 * `Transaction ID`
-* `Signature` of this payload</li>
+* `Signature` of this payload
 
 The provider sends back this `signed payload` to Ledger Live which in turn forwards it to the hardware wallet.
 
@@ -126,12 +126,12 @@ The provider sends back this `signed payload` to Ledger Live which in turn forwa
 </center>  
 <br/>
 
-<li>After receiving the `signed payload`, the Exchange app running inside the Secure Element verifies the `signature` of the payload using the provider’s `public key` and the `transaction ID`. This `public key` is certified by Ledger and the public key to verify this certificate is stored in the Exchange app.
+5- After receiving the `signed payload`, the Exchange app running inside the Secure Element verifies the `signature` of the payload using the provider’s `public key` and the `transaction ID`. This `public key` is certified by Ledger and the public key to verify this certificate is stored in the Exchange app.
 * The signature ensures the payload has actually been sent by the provider (non-repudiation principle).
-* The `transaction ID` avoids a replay attack</li>
+* The `transaction ID` avoids a replay attack
 
 
-<li>The Exchange app displays the amounts of the swap transaction so the user can validate them. In the background, the application automatically verifies that the user’s Ethereum and Bitcoin addresses are indeed managed by the device, so the user does not have to verify them manually. The provider’s addresses are trusted thanks to the provider’s cryptographic signature.</li>
+6- The Exchange app displays the amounts of the swap transaction so the user can validate them. In the background, the application automatically verifies that the user’s Ethereum and Bitcoin addresses are indeed managed by the device, so the user does not have to verify them manually. The provider’s addresses are trusted thanks to the provider’s cryptographic signature.
 
 <br/>
 <center>
@@ -139,9 +139,9 @@ The provider sends back this `signed payload` to Ledger Live which in turn forwa
 </center>  
 <br/>
 
-<li>Finally, the swap operation can now be executed. The Exchange app calls the Bitcoin app to compute the transaction’s signature, which it returns.</li>
+7- Finally, the swap operation can now be executed. The Exchange app calls the Bitcoin app to compute the transaction’s signature, which it returns.
 
-<li>Once the swap provider has received the BTC, it will send back the ETH, and all the operation details are then displayed in Ledger Live.</li>
+8- Once the swap provider has received the BTC, it will send back the ETH, and all the operation details are then displayed in Ledger Live.
 </ol>
 <br/>
 <center>

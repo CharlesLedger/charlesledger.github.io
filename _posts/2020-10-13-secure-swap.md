@@ -85,7 +85,7 @@ The overall mechanism is quite simple and described in the following steps.
 
 <br/>
 <center>
-<img src="/blog_swap/7.png" style="width:500px;">
+<img src="/blog_swap/7.jpg" style="width:500px;">
 </center>  
 <br/>
 
@@ -122,7 +122,7 @@ The provider sends back this `signed payload` to Ledger Live which in turn forwa
 
 <br/>
 <center>
-<img src="/blog_swap/10.png" style="width:500px;">
+<img src="/blog_swap/10.jpg" style="width:500px;">
 </center>  
 <br/>
 
@@ -135,7 +135,7 @@ The provider sends back this `signed payload` to Ledger Live which in turn forwa
 
 <br/>
 <center>
-<img src="/blog_swap/11.png" style="width:500px;">
+<img src="/blog_swap/11.gif" style="width:500px;">
 </center>  
 <br/>
 

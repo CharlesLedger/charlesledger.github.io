@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Raising the bar for security with Ledger Swap 
-author: 
+author: Charles Guillemet
 summary: Enhancing the state of the art security for swap operations with Ledger hardware wallet.
-featured-img:  
+featured-img: swap
 categories: Tech
 ---
 
@@ -160,3 +160,5 @@ We’ve shown how to implement end-to-end security on a Swap operation in Ledger
 * In today’s setup, users can only swap crypto if both the sending and receiving accounts are backed up by the same recovery phrase.
 * Now that we’ve achieved this goal, we’ll look into securing decentralized swaps in the future.
 * We hope we can inspire other wallets with our work and together raise the standards for security and ease of use.
+
+{% include signatures/charles.html %}

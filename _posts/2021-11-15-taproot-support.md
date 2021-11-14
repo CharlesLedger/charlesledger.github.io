@@ -140,7 +140,7 @@ When you interact with the Bitcoin protocol within Ledger Live, several componen
 <br />
 <center>
   <figure class="image">
-    <img src="{{ site.baseurl }}/assets/taproot/ledger-explorer.svg">
+    <img src="{{ site.baseurl }}/assets/taproot/ledger_explorer.svg">
     <br/><br/>
   </figure>
 </center>
@@ -185,3 +185,4 @@ We’re thrilled to announce the support of Taproot at Ledger and we’ll contin
 Read our [Ledger Academy](https://www.ledger.com/academy/what-is-taproot) articles on Taproot.
 
 {% include signatures/charles.html %}
+{% include signatures/salvatore.html %}

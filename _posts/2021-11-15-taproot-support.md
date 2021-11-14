@@ -113,4 +113,3 @@ We’re thrilled to announce the support of Taproot at Ledger and we’ll contin
 Read our [Ledger Academy](https://www.ledger.com/academy/what-is-taproot) articles on Taproot.
 
 {% include signatures/charles.html %}
-{% include signatures/salvatore.html %}

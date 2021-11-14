@@ -65,7 +65,7 @@ His signature algorithm is much simpler than any other, gives better security pr
 <br />
 <center>
   <figure class="image">
-    <img src="{{ site.baseurl }}/assets/taproot/schnorr-multisig.png">
+    <img src="{{ site.baseurl }}/assets/taproot/schnorr-musig.png">
     <br/><br/>
     <figcaption>Schnorr signature is linear</figcaption>
   </figure>

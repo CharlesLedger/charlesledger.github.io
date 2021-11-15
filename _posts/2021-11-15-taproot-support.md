@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Update - Taproot Support in the Ledger Stack
+title: Why Taproot Matters for Bitcoin and Ledger's Future?
 author: Charles Guillemet and Salvatore Ingala
 summary: Bitcoin Taproot is live and Ledger supports it already
 featured-img: taproot-logo
